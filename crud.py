@@ -11,7 +11,7 @@ def create_melon(melon_name, melon_img,description):
 
     melon= Melon(melon_name=melon_name,melon_img=melon_img,description=description)
     db.session.add(melon)
-    db.sesssion.commit()
+    db.session.commit()
     return melon
 
 def create_journal(title,rating,entry,favorite,melon,user,flavor):
