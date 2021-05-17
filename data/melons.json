@@ -140,13 +140,13 @@
 
     {
         "name": "Rocky",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265059/melons/Rocky_fchool.png",
         "description": "These are also known as rocky sweet melons or rocky ford melons. Their rind is brown-green, and they are rather small, averaging 3-5 inches."
     },
 
     {
         "name": "Golden Langkawi",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265368/melons/Golden_Langkawi_au1l75.png",
         "description": "In appearance, the golden langkawi is very similar-looking to the canary melon. It has bright yellow skin and soft, white flesh."
     },
 
@@ -158,19 +158,19 @@
 
     {
         "name": "Autumn Sweet Melon",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265235/melons/Autumn_Sweet_Melon_ttjumc.jpg",
         "description": "The autumn sweet melon is a small, golden-yellow melon. It typically weighs up to four pounds. It can also be recognized by its white flesh."
     },
 
     {
         "name": "Sky Rocket",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265081/melons/Sky_Rocket_fc3v5o.jpg",
         "description": "This melon is visually similar to honeydew, but has a much harder rind. It also has brown skin with off-white flesh."
     },
 
     {
         "name": "Jade Dew",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621264966/melons/Jade_Dew_hynvas.jpg",
         "description": "Jade dew melons are typically an off-white color. When exposed to the sun, their rind can turn dark green. The flesh is a dull-green color."
     },
 
@@ -182,25 +182,25 @@
 
     {
         "name": "Golden Prize",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621264153/melons/Golden_Prize_hoqrvk.jpg",
         "description": "The golden prize is visually similar to the canary and golden Langkawi melons. Typically, its flesh is orange and very soft."
     },
 
     {
         "name": "Ten Me",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265147/melons/Ten_Me_wqgqp2.jpg",
         "description": "The ten me melon is another expensive Japanese melon. It can have green or yellow-white skin. The flesh is typically firm and off-white."
     },
 
     {
         "name": "New Century",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265015/melons/New_Century_awwbcl.jpg",
         "description": "The new century melon looks very similar to its Chinese counterpart: the hami melon. It is typically oblong and slighter smaller than the hami, usually around 3-4 pounds."
     },
 
     {
         "name": "Banana",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265258/melons/Banana_jedwcd.jpg",
         "description": "This heirloom melon takes its name from its distinct banana shape and color. It can reach about 5 pounds in mass."
     },
 
@@ -212,32 +212,32 @@
 
     {
         "name": "Camouflage",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265280/melons/Camouflage_vpv4oe.jpg",
         "description": " Also known as the frog skin melon, this muskmelon “hides” among watermelons with its dark, green, mottled skin."
     },
 
     {
         "name": "Crane",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265324/melons/Crane_jrx1p2.png",
         "description": "Richard Hope Crane developed the crane melon in the early 20th century in Santa Rosa California. The melon is approximately cantaloupe-sized, but it has smooth skin and mottled green and pale yellow patterns."
     },
 
     {
         "name": "Sugar",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265125/melons/Sugar_x0me6s.png",
         "description": "Also known as sugar kiss melons, the sugar melon is like a smaller, more spherical cousin to the cantaloupe. Besides the size, the only noticeable difference typically is the tighter netting pattern present on the sugar melon."
     },
 
     {
         "name": "Tiger/Tigger",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265169/melons/Tiger_Tigger_lv8d9z.jpg",
         "description": "This melon is easily recognizable by its striped, tiger skin. They grow up to roughly 11 pounds, but they are so dense they can usually fit in the palm of your hand."
     },
 
 
     {
         "name": "Vert Grimpant",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265191/melons/Vert_Grimpant_mwgfyh.jpg",
         "description": "Also known as the green climbing melon, verts are types of melons that grow very well on a trestle. They have green mottled skin and grow up to several pounds."
     },
 
@@ -258,14 +258,14 @@
 
     {
         "name": "Maroon Cucumber – Cucumis anguria",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621264993/melons/Maroon_Cucumber_Cucumis_anguria_gsryg3.png",
         "description": "These melons are another melon/cucumber hybrid. While many sweet gherkin pickles are made from C. anguira, the raw fruit of many varieties is more melon-like."
     },
 
 
     {
         "name": "Winter – Benincasa hispida",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265213/melons/Winter_Benincasa_hispida_hocwby.jpg",
         "description": "Also known as an ash gourd or white gourd, this variety of melon is often eaten more as a vegetable than as a fruit. It is the only member of the genus Benincasa."
     },
 
@@ -277,25 +277,25 @@
 
     {
         "name": "Gac Melon – Momordica cochinchinensis",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265346/melons/Gac_Melon_Momordica_cochinchinensis_xlwqyw.jpg",
         "description": "The gac melon has an unassuming outside of brown and orange skin covered in small spikes and dimples. When it is cut open, the flesh is exposed to be a brilliant pink and red. They grow to the size of a softball usually."
     },
 
     {
         "name": "Spiny Gourd – Momordica dioica",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265103/melons/Spiny_Gourd_Momordica_dioica_hc3k91.jpg",
         "description": "Also known as the bristly balsam pear, prickly carolaho, the spiny gourd is visually similar to the gac and horned melons. It is the size of a golf ball and the skin is usually green."
     },
 
     {
         "name": "Casabanana – Sicana odorifera",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265302/melons/Casabanana_Sicana_odorifera_zirtcg.jpg",
         "description": "Also known as the sikana or puttigel, the casabanana is another melon not within C. melo. The skin can be a variety of colors, but the flesh is typically yellow-orange."
     },
 
     {
         "name": "Pepino – Solanum muricatum",
-        "img": "",
+        "img": "https://res.cloudinary.com/dpapvtab4/image/upload/v1621265037/melons/Pepino_Solanum_muricatum_y3a5nu.png",
         "description": "Technically, the Pepino (sweet cucumber) isn’t a melon. It is not a member of the gourd family, Cucurbitaceae. It isn’t even in the same order as melons, either. That said, culinarily, it is treated like a melon. They look like honeydew and have smooth, mottled skin."
     }
 
