@@ -22,8 +22,7 @@ class Memory(db.Model):
     __tablename__ = 'memories'
 
     memory_id = db.Column(db.Integer, primary_key= True, autoincrement= True)
-    melon_id = db.Column(db.Integer, db.ForeignKey('melons.melon_id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    journal_id = db.Column(db.Integer, db.ForeignKey('journal_entries.journal_id'), nullable=False)
 
     memory_img = db.Column(db.String)
     location = db.Column(db.String)
@@ -31,8 +30,8 @@ class Memory(db.Model):
     date = db.Column(db.Date)
     friend = db.Column(db.String)
 
-    melon = db.relationship('Melon', backref= 'memories')
-    user = db.relationship('User', backref='memories')
+    journal_entry = db.relationship('Journal_entry', backref='memories')
+  
 
     def __repr__(self):
         return f'<Memory memory_id = {self.memory_id} location = {self.location}>'
@@ -62,7 +61,7 @@ class Flavor(db.Model):
     bitter = db.Column(db.Integer)
     sweet = db.Column(db.Integer)
     salty = db.Column(db.Integer)
-    spice = db.Column(db.Integer)
+    savory = db.Column(db.Integer)
 
     def __repr__(self):
         return f'<Flavor flavor_id = {self.flavor_id}>'
@@ -80,6 +79,7 @@ class Journal_entry(db.Model):
     title = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer, nullable=False) 
     entry = db.Column(db.Text, nullable=False)
+    favorite = db.Column(db.Boolean, default=False)
 
     melon = db.relationship('Melon', backref= 'journal_entries')
     user = db.relationship('User', backref='journal_entries')
