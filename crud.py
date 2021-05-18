@@ -7,6 +7,12 @@ def create_user(user_name,email,password):
     db.session.commit()
     return user
 
+
+def get_user(email):
+
+    return User.query.filter_by(email=email).first()  
+
+
 def create_melon(melon_name, melon_img,description):
 
     melon= Melon(melon_name=melon_name,melon_img=melon_img,description=description)
