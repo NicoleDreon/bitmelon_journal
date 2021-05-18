@@ -1,5 +1,5 @@
-from flask import Flask
-from model import connect_to_db
+from flask import Flask, render_template
+from backend.model import connect_to_db
 from datetime import datetime
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def homepage():
     """View page for React app"""
 
-    return render_template('main.html')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
