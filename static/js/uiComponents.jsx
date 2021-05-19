@@ -5,14 +5,14 @@ function Homepage(props) {
         fetch('/login')
         .then((response) => response.json())
         .then((data) => {
-            console.log(type(data));
+            console.log(data);
             setUserInfo(data);
         })
     }, [])
 
     return (
         <div>
-            <h1>{userInfo}</h1>
+            <h1>{userInfo['user_name']}</h1>
         </div>
     );
 }
