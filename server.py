@@ -1,19 +1,15 @@
-from flask import (Flask, render_template, request, redirect)
+from flask import (Flask, render_template, request, redirect, jsonify)
 from model import connect_to_db
 from datetime import datetime
 import crud
 
 app = Flask(__name__)
 
-@app.route('/')
-def homepage():
-    """View page for React app"""
-
-    return render_template('index.html')
 
 
-@app.route('/<path>', methods=['GET', 'POST'])
-def route(path):
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
 
     if request.method == 'POST':
         email = request.form.get('email')
@@ -22,9 +18,16 @@ def route(path):
         user = crud.get_user(email)
 
         print(user)
+        userInfo = {'user_name' : user.user_name}
 
-        return redirect('/')
+        return jsonify(userInfo)
 
+    return jsonify('no user available')
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
     return render_template('index.html')
 
 
