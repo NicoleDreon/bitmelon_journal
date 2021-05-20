@@ -1,4 +1,4 @@
-from flask import (Flask, render_template, request, redirect, jsonify)
+from flask import (Flask, render_template, request, redirect, jsonify, url_for)
 from model import connect_to_db
 from datetime import datetime
 import crud
@@ -8,7 +8,28 @@ app = Flask(__name__)
 
 
 
-@app.route('/login', methods=['GET', 'POST'])
+
+@app.route('/allmelons.json')
+def all_melons():
+
+    allmelons = crud.get_all_melons()
+    dict_melon={}
+    
+    i=0
+    for melon in allmelons:
+        dict_p={}
+        dict_p['name']=melon.melon_name
+        dict_p['description']=melon.description
+        dict_melon[i]=dict_p
+        i=i+1
+    
+    print(type(dict_melon))
+    print(type(dict_melon[1]))
+   
+    return jsonify(dict_melon)
+
+
+@app.route('/login.json', methods=['GET', 'POST'])
 def login():
 
     if request.method == 'POST':
@@ -19,7 +40,8 @@ def login():
         user = crud.get_user(email)
         if user:
             if user.password == password:
-                return ' you logged in '
+                dict_user={'user_name':user.user_name}
+                return jsonify(dict_user)
             else:
                 return 'incorrect password'
         print(user)

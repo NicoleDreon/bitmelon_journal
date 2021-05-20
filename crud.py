@@ -27,6 +27,8 @@ def get_melons():
 
     return melons
 
+def get_all_melons():
+    return Melon.query.all()
 
 def create_journal(title,rating,entry,favorite,melon,user,flavor):
 

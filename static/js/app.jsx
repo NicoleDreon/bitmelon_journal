@@ -6,11 +6,12 @@ function App() {
         <ReactRouterDOM.BrowserRouter> 
             {/* maybe add switch */}
             <ReactRouterDOM.Switch>
-                <ReactRouterDOM.Route exact path={["/","/login","/signup"]}>
+                <ReactRouterDOM.Route exact path={["/","/login","/signup", "/allmelons"]}>
                     <nav id="logout">
                         <ReactRouterDOM.Link to="/">Homepage | </ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/login">Login | </ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/signup">Signup | </ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/allmelons">See All Our Melons! | </ReactRouterDOM.Link>
                         <hr></hr>
                     </nav>
                 </ReactRouterDOM.Route>
@@ -43,6 +44,10 @@ function App() {
 
                 <ReactRouterDOM.Route exact path="/login">
                     <Login />
+                </ReactRouterDOM.Route>
+
+                <ReactRouterDOM.Route exact path="/allmelons">
+                    <AllMelons />
                 </ReactRouterDOM.Route>
                 
             </ReactRouterDOM.Switch>
