@@ -30,34 +30,46 @@ function Login(props) {
     const [userInfo, setUserInfo] = React.useState([]);
 
     React.useEffect(()=>{
-        fetch('/login')
+        fetch('/login.json')
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
             setUserInfo(data);
+            
         })
     }, [])
+    
+    
+    // for (const key in userInfo) {
+    //     userInfo
+    //     function updateLoginToProfile(props) {
+            
+    //         <UserProfile key={key} />
+    //     }
+    // }
 
-    function loginUser(evt){
-        // evt.preventDefault();
-        console.log(evt);
-        const login = document.querySelector('button')
 
-        // $.post('/login', login, (response)=>{
-        //     console.log(response);
-        // })
-        console.log('done');
-    }
+    // function loginUser(evt){
+    //     // evt.preventDefault();
+    //     console.log(evt);
+    //     const login = document.querySelector('button')
+
+    //     // $.post('/login', login, (response)=>{
+    //     //     console.log(response);
+    //     // })
+    //     console.log('done');
+    // }
 
     return (
         <div>
             <h1>Login</h1>
-            <form action="/login" method="post">
+            <form action="/login.json" method="post">
                 <label>Email</label>
                 <input type="text" name="email" id="email" />
                 <label>Password</label>
                 <input type="password" name="password" id="password" />
-                <button onClick={loginUser}>Login</button>
+                {/* <button onClick={loginUser}>Login</button> */}
+                <button type="submit">Login</button>
             </form>
         </div>
     );
@@ -67,8 +79,9 @@ function Login(props) {
 function UserProfile(props) {
     return (
         <div>
-            <h5>user is logged in</h5>
-            <h5>this is the user profile componen</h5>
+            <h5>{props.name}</h5>
+            {/* {key.user_name} */}
+            <h5>{props.description}</h5>
         </div>
     )
 }
@@ -124,3 +137,36 @@ function MelonWanted(props){
 }
 
 
+function AllMelons(props){
+
+    const [allMelons, setAllMelons] = React.useState([]);
+    const [clickedButtonId, setClickedButtonId] = React.useState('');
+
+    React.useEffect(()=>{
+        fetch('/allmelons.json')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("test")
+            setAllMelons(data);
+            
+        })
+    }, [])
+
+    const complimentButtons = [];
+    for (const key in allMelons) {
+        // updateDetails is the callback function we'll use when the button is clicked
+        complimentButtons.push(
+            // Give each button a unique key so that React can identify it.
+            // Let's go ahead and use the ClickableButton component
+            // that we made earlier.
+            <UserProfile key={key} name={allMelons[key]['name']} description= {allMelons[key]['description']}/>
+        )
+    }
+
+    return(
+        <div>
+        {complimentButtons}
+        {clickedButtonId && <Details id={clickedButtonId} />}
+        </div>
+    )
+}
