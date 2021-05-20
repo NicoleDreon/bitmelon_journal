@@ -14,15 +14,18 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
+        
+        #need conditional to make sure password match
         user = crud.get_user(email)
-
+        if user:
+            if user.password == password:
+                return 'logged in'
+            else:
+                return 'incorrect password'
         print(user)
-        userInfo = {'user_name' : user.user_name}
+        # userInfo = {'user_name' : user.user_name}
 
-        return jsonify(userInfo)
-
-    return jsonify('no user available')
+    return 'no user available'
 
 
 @app.route('/', defaults={'path': ''})

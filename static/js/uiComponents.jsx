@@ -1,4 +1,32 @@
 function Homepage(props) {
+  
+// conditional for navbar to display, return should change according to state
+    return (
+        <div>
+            {/* <div>
+                <header>
+                    logged out
+                </header> 
+            </div>
+            <div id="login">
+                <header>
+                    logged in - logic to get this one
+                </header> 
+            </div> */}
+            {/* <h1>{userInfo['user_name']}</h1> */}
+            <h3>testing login </h3>
+        </div>
+    );
+}
+
+ReactDOM.render(
+    (
+      <Homepage/>
+    ),
+    document.querySelector('#login')
+  );
+
+function Login(props) {
     const [userInfo, setUserInfo] = React.useState([]);
 
     React.useEffect(()=>{
@@ -10,14 +38,17 @@ function Homepage(props) {
         })
     }, [])
 
-    return (
-        <div>
-            <h1>{userInfo['user_name']}</h1>
-        </div>
-    );
-}
+    function loginUser(evt){
+        // evt.preventDefault();
+        console.log(evt);
+        const login = document.querySelector('button')
 
-function Login(props) {
+        // $.post('/login', login, (response)=>{
+        //     console.log(response);
+        // })
+        console.log('done');
+    }
+
     return (
         <div>
             <h1>Login</h1>
@@ -26,7 +57,7 @@ function Login(props) {
                 <input type="text" name="email" id="email" />
                 <label>Password</label>
                 <input type="password" name="password" id="password" />
-                <button type="submit">Login</button>
+                <button onClick={loginUser}>Login</button>
             </form>
         </div>
     );
