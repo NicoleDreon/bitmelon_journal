@@ -19,12 +19,12 @@ function Homepage(props) {
     );
 }
 
-ReactDOM.render(
-    (
-      <Homepage/>
-    ),
-    document.querySelector('#login')
-  );
+// ReactDOM.render(
+//     (
+//       <Homepage/>
+//     ),
+//     document.querySelector('#login')
+//   );
 
 function Login(props) {
     const [userInfo, setUserInfo] = React.useState([]);
@@ -63,3 +63,32 @@ function Login(props) {
     );
 }
 
+
+function UserProfile(props) {
+    return (
+        <div>
+            <h5>user is logged in</h5>
+            <h5>this is the user profile componen</h5>
+        </div>
+    )
+}
+
+function MelonMemory(props) {
+    return (
+        <div>
+            <header>Memory</header>
+            <form action="/melonMemory">
+                <label>Location</label>
+                <input type="text" name="location" id="location"/>
+                <label>Memory</label>
+                <input type="text" name="melon-memory" id="melon-memory" />
+                <label>Date</label>
+                <input type="date" />
+                <label>Friend</label>
+                <input type="text" />
+                <label>Image</label>
+                <button>Button</button>
+            </form>
+        </div>
+    )
+}
