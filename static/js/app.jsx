@@ -19,6 +19,7 @@ function App() {
                         {/* the two below need to only show when logged in - store in state
                         check state when renders component done in this file */}
                         <ReactRouterDOM.Link to="/userprofile">User Profile | </ReactRouterDOM.Link>
+                        
                         <ReactRouterDOM.Link to="/favorites">Favorites | </ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/logout">Logout</ReactRouterDOM.Link>
                         <hr></hr>
@@ -26,7 +27,9 @@ function App() {
                 <ReactRouterDOM.Route exact path="/userprofile">
                 
                         <UserProfile />
+                        <MelonJournal />                      
                         <MelonMemory />
+                        <MelonWanted />
                 </ReactRouterDOM.Route>
                
 

@@ -73,6 +73,28 @@ function UserProfile(props) {
     )
 }
 
+function MelonJournal(props) {
+    return (
+        <div>
+            <header>Journal</header>
+            <form action="/melonMemory">
+                <label>Title</label>
+                <input type="text" name="title" id="title"/>
+                <label>Rating</label>
+                <input type="text" name="rating" id="rating" />
+                <label>Favorite</label>
+                <input type="text" />
+                <label>Flavor</label>
+                {/* <input type="text" /> */}
+                <label>Image</label>
+                <button>Button</button>
+            </form>
+        </div>
+    )
+}
+
+
+
 function MelonMemory(props) {
     return (
         <div>
@@ -92,3 +114,13 @@ function MelonMemory(props) {
         </div>
     )
 }
+
+function MelonWanted(props){
+    return(
+        <div>
+            <h5>melon wanted</h5>
+        </div>
+    )
+}
+
+
