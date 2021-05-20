@@ -27,6 +27,15 @@ def login():
 
     return 'no user available'
 
+#for the form we need- melon names from database as list, to show in drop down 
+#journal entry
+#create route and function 
+#get form details with .get request
+#get melon - get melon id from name selected by user 
+#get flavor - create flavor object 
+#get user 
+#create journal entry with crud function (need melonid, flavorid, userid)
+
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
