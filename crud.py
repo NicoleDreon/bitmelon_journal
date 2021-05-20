@@ -20,6 +20,14 @@ def create_melon(melon_name, melon_img,description):
     db.session.commit()
     return melon
 
+
+def get_melons():
+
+    melons = Melon.query.all()
+
+    return melons
+
+
 def create_journal(title,rating,entry,favorite,melon,user,flavor):
 
     journal=Journal_entry(title=title,rating=rating,entry=entry,favorite=favorite,melon=melon,user=user,flavor=flavor)
