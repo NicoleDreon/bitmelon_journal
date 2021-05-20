@@ -20,6 +20,13 @@ def create_melon(melon_name, melon_img,description):
     db.session.commit()
     return melon
 
+
+def get_melons():
+
+    melons = Melon.query.all()
+
+    return melons
+
 def get_all_melons():
     return Melon.query.all()
 
