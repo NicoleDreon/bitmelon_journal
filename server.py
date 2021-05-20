@@ -19,7 +19,7 @@ def login():
         user = crud.get_user(email)
         if user:
             if user.password == password:
-                return 'logged in'
+                return ' you logged in '
             else:
                 return 'incorrect password'
         print(user)
