@@ -20,6 +20,7 @@ def all_melons():
         dict_p={}
         dict_p['name']=melon.melon_name
         dict_p['description']=melon.description
+        dict_p['url']= melon.melon_img
         dict_melon[i]=dict_p
         i=i+1
     

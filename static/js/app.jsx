@@ -28,6 +28,7 @@ function App() {
                 <ReactRouterDOM.Route exact path="/userprofile">
                 
                         <UserProfile />
+                        <AllMelons />
                         <MelonJournal />                      
                         <MelonMemory />
                         <MelonWanted />
