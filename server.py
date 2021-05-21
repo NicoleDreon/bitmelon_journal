@@ -47,6 +47,40 @@ def login():
 
     return 'no user available'
 
+#for the form we need- melon names from database as list, to show in drop down 
+#journal entry
+#create route and function 
+#get form details with .get request
+#get melon - get melon id from name selected by user 
+#get flavor - create flavor object 
+#get user 
+#create journal entry with crud function (need melonid, flavorid, userid)
+# @app.route('/melons.json')
+# def get_melons():
+
+#     melons = crud.get_melons()
+
+#     melon_dicts = []
+#     melon_names = []
+#     for melon in melons:
+#         melon_dict = {}
+#         melon_dict['melon_id'] = melon.melon_id
+#         melon_dict['melon_name'] = melon.melon_name
+#         melon_dict['melon_img'] = melon.melon_img
+#         melon_dict['description'] = melon.description
+#         melon_dicts.append(melon_dict)
+
+#     for melon in melons:
+#         name = melon.melon_name
+#         melon_names.append(name)
+        
+#     print('*******')
+#     print(melon_names)
+#     print('*******')
+
+#     return jsonify(melon_names)
+
+        
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
