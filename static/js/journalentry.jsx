@@ -1,36 +1,67 @@
 function MelonJournal(props) {
 
-    const [melons, setMelons] = React.useState([]);
+    const [allMelons, setAllMelons] = React.useState([]);
+    const [clickedButtonId, setClickedButtonId] = React.useState('');
 
     React.useEffect(()=>{
-    fetch('/melons.json')
-    .then((response) => response.json())
-    .then((data) => {
-    setMelons(data);
-    // console.log(data);
-    console.log(setMelons);      
-     })
+        fetch('/allmelons.json')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("test")
+            setAllMelons(data);
+            
+        })
     }, [])
-     console.log(melons); 
+    // allMelons(dict with description, name and img)
+    const melonArray = [];
+    for (const melon in allMelons) {
+        console.log('--------')
+        console.log(allMelons[melon]['name'])
+        // updateDetails is the callback function we'll use when the button is clicked
+        melonArray.push(
+        //     // Give each button a unique key so that React can identify it.
+        //     // Let's go ahead and use the ClickableButton component
+        //     // that we made earlier.
+            allMelons[melon]['name']
+        )
+    }
+    console.log(melonArray)
 
-    const test = melons
-    const melon_names = test.map((test)=>
-        <li>{melon_names}</li>);
-        console.log(melon_names); 
+// need function for form, take 
+// function createJournal(){
+//     preventDefault();
+    // do fetch request here for users inputs
+// }using fetch request to send info to server to have access
+
+// deconstruct props
+// is logged in state should be in app parent so other components 
+// can use that state
+
+// need onclick on button/onsubmit on form not action 
+// we need to grab information from user as props.setUserInfo
+// does our state for journal entry need to be available for any children components?
+// like Memory
+// when we get information from form on server need to useCallback
+// request.json.get not form
 
     return (
         
         <div>
+            {/* no action */}
             <header>Journal</header>
-            <form action="/melonJournal">
+            {/* need to compare to user */}
+            <form  action="/melonJournal">
                 <label>Title</label>
                 <select name="title" id="title">
                     {/* {{for melon of melons}} */}
-                    <option id="melon_names" >   
+                    <option id="melon_names" >{melonArray}
                     </option>
                 </select>
                 <label>Rating</label>
-                <input type="text" name="rating" id="rating" />
+                <input type="text" name="rating" id="rating" onchange={evt=>{
+                    setRating(evt.target.value)
+                }}/> 
+                {/* need to figure out code for this compart to queentessa */}
                 <label>Favorite</label>
                 <input type="text" />
                 <label>Flavor</label>

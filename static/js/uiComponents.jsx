@@ -141,6 +141,10 @@ function AllMelons(props){
 
     return(
         <div>
+        {complimentButtons}
+        {/* do we need the line of code below? */}
+        {clickedButtonId && <Details id={clickedButtonId} />}
+
             {melonDiv}
         </div>
     )
