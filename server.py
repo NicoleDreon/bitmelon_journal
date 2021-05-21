@@ -3,6 +3,7 @@ from model import connect_to_db
 from datetime import datetime
 import crud
 
+
 app = Flask(__name__)
 
 
@@ -27,25 +28,30 @@ def all_melons():
     return jsonify(dict_melon)
 
 
-@app.route('/login.json', methods=['GET', 'POST'])
+@app.route('/login.json', methods=['POST'])
 def login():
 
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        
-        #need conditional to make sure password match
-        user = crud.get_user(email)
-        if user:
-            if user.password == password:
-                dict_user={'user_name':user.user_name}
-                return jsonify(dict_user)
-            else:
-                return 'incorrect password'
-        print(user)
-        # userInfo = {'user_name' : user.user_name}
+    email = request.json.get('email')
+    password = request.json.get('password')
+    print(email, password)
+    #need conditional to make sure password match
+    user = crud.get_user(email)
+    if user:
+        if user.password == password:
+            
+            user_info = {
+                'user_name': user.user_name,
+                'email': user.email,
+                'user_id': user.user_id
+            }
+            print(user_info)
 
+            return jsonify(user_info)
+        else:
+            return 'incorrect password'
     return 'no user available'
+
+
 
 #for the form we need- melon names from database as list, to show in drop down 
 #journal entry
