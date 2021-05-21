@@ -12,21 +12,22 @@ function MelonJournal(props) {
             
         })
     }, [])
-    // allMelons(dict with description, name and img)
+
     const melonArray = [];
     for (const melon in allMelons) {
-        console.log('--------')
-        console.log(allMelons[melon]['name'])
-        // updateDetails is the callback function we'll use when the button is clicked
         melonArray.push(
-        //     // Give each button a unique key so that React can identify it.
-        //     // Let's go ahead and use the ClickableButton component
-        //     // that we made earlier.
-            allMelons[melon]['name']
+        <MelonDrop name={allMelons[melon]['name']} />
         )
     }
     console.log(melonArray)
 
+function MelonDrop(props) {
+    return (
+            <option>
+              {props.name}
+            </option>
+    )
+}
 // need function for form, take 
 // function createJournal(){
 //     preventDefault();
@@ -52,15 +53,13 @@ function MelonJournal(props) {
             {/* need to compare to user */}
             <form  action="/melonJournal">
                 <label>Title</label>
-                <select name="title" id="title">
-                    {/* {{for melon of melons}} */}
-                    <option id="melon_names" >{melonArray}
-                    </option>
-                </select>
+                <select name="melon_name" id="malon_name">
+                {melonArray}</select>
                 <label>Rating</label>
-                <input type="text" name="rating" id="rating" onchange={evt=>{
+                <input type="text" name="rating" id="rating" /> 
+                {/* onchange={evt=>{
                     setRating(evt.target.value)
-                }}/> 
+                }} */}
                 {/* need to figure out code for this compart to queentessa */}
                 <label>Favorite</label>
                 <input type="text" />
@@ -133,7 +132,7 @@ function MelonJournal(props) {
                 <label>Image</label>
                 <button>Button</button>
             </form>
-           
+           {/* <script>const getMelon {for(let melon of melonArray)}</script> */}
         </div>
     )
 }
