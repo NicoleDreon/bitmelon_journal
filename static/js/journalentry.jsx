@@ -34,6 +34,8 @@ function MelonJournal(props) {
 // }using fetch request to send info to server to have access
 
 // deconstruct props
+// is logged in state should be in app parent so other components 
+// can use that state
 
 // need onclick on button/onsubmit on form not action 
 // we need to grab information from user as props.setUserInfo
