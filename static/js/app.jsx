@@ -53,6 +53,7 @@ function App() {
 
                 <ReactRouterDOM.Route exact path="/login">
                     <Login userInfo={userInfo} setUserInfo={setUserInfo}/>
+                    <UserProfile userInfo={userInfo} setUserInfo={setUserInfo}/>
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/allmelons">
