@@ -20,28 +20,40 @@ function Homepage(props) {
 }
 
 
-
 function Login(props) {
-    const [userInfo, setUserInfo] = React.useState([]);
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
-    React.useEffect(()=>{
-        fetch('/login.json')
+    function loginUser(evt) {
+        evt.preventDefault()
+
+        console.log(email)
+        console.log(password)
+
+        fetch('/login.json', {
+            method: 'POST',
+            body: JSON.stringify({'email': email, 'password': password}),
+            headers: {'Content-type': 'application/json'}
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            setUserInfo(data);
-            
+            props.setUserInfo(data);
         })
-    }, [])
+    }
+
     return (
         <div>
             <h1>Login</h1>
-            <form action="/login.json" method="post">
+            <form onSubmit={(evt) => {loginUser(evt)}}>
                 <label>Email</label>
-                <input type="text" name="email" id="email" />
+                <input type="text" name="email" id="email" onChange={ evt => {
+                    setEmail(evt.target.value)
+                }}/>
                 <label>Password</label>
-                <input type="password" name="password" id="password" />
-                {/* <button onClick={loginUser}>Login</button> */}
+                <input type="password" name="password" id="password" onChange={ evt => {
+                    setPassword(evt.target.value)
+                }}/>
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -50,12 +62,14 @@ function Login(props) {
 
 
 function UserProfile(props) {
+
+    const {userInfo} = props
+    
     return (
         <div className="col-3" >
-            <h6>{props.name}</h6>
-            {/* {key.user_name} */}
-            <h6>{props.description}</h6>
-            <img src={props.img} width="100%" height="20%"  />
+            user info should show: 
+            <h1>{userInfo.user_name}</h1>
+            <h6>{userInfo.user_id}</h6>
         </div>
     )
 }
