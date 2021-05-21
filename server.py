@@ -6,9 +6,6 @@ import crud
 app = Flask(__name__)
 
 
-
-
-
 @app.route('/allmelons.json')
 def all_melons():
 
