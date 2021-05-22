@@ -74,16 +74,17 @@ class Journal_entry(db.Model):
     journal_id = db.Column(db.Integer, primary_key= True, autoincrement= True)
     melon_id = db.Column(db.Integer, db.ForeignKey('melons.melon_id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    flavor_id = db.Column(db.Integer, db.ForeignKey('flavors.flavor_id'), nullable=False)
+    # flavor_id = db.Column(db.Integer, db.ForeignKey('flavors.flavor_id'), nullable=True)
 
     title = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer, nullable=False) 
     entry = db.Column(db.Text, nullable=False)
     favorite = db.Column(db.Boolean, default=False)
+    
 
     melon = db.relationship('Melon', backref= 'journal_entries')
     user = db.relationship('User', backref='journal_entries')
-    flavor = db.relationship('Flavor', backref= 'journal_entries')
+    # flavor = db.relationship('Flavor', backref= 'journal_entries')
 
     def __repr__(self):
         return f'<Journal_entry title = {self.title} rating= {self.rating}>'
