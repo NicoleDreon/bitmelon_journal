@@ -22,8 +22,8 @@ def all_melons():
         dict_melon[i]=dict_p
         i=i+1
     
-    print(type(dict_melon))
-    print(type(dict_melon[1]))
+    # print(type(dict_melon))
+    # print(type(dict_melon[1]))
    
     return jsonify(dict_melon)
 
@@ -33,7 +33,7 @@ def login():
 
     email = request.json.get('email')
     password = request.json.get('password')
-    print(email, password)
+    # print(email, password)
     #need conditional to make sure password match
     user = crud.get_user(email)
     if user:
@@ -44,7 +44,7 @@ def login():
                 'email': user.email,
                 'user_id': user.user_id
             }
-            print(user_info)
+            # print(user_info)
 
             return jsonify(user_info)
         else:
@@ -53,14 +53,39 @@ def login():
 
 
 
-#for the form we need- melon names from database as list, to show in drop down 
-#journal entry
-#create route and function 
-#get form details with .get request
-#get melon - get melon id from name selected by user 
-#get flavor - create flavor object 
-#get user 
-#create journal entry with crud function (need melonid, flavorid, userid)
+@app.route('/journal.json', methods=['POST'])
+def journal():
+    #should be knock down flavor for now?
+    #need to figure out title/melon_name passing of information from .jsx to server
+    #how do we get user info? 
+    # pass 
+
+    melon_name = request.json.get('melon_name')
+    
+    melon = crud.get_melon_obj(melon_name)
+
+    rating = request.json.get('rating')
+    rating = int(rating)
+    entry = request.json.get('entry')
+    favorite = request.json.get('favorite')
+    favorite = bool(favorite) #always reverting to true
+
+    title= melon_name
+    user = crud.get_user('sameea@gmail.com')
+    journal = crud.create_journal(title,rating,entry,favorite,melon, user)
+
+    print(f'\n\n\n{journal}\n\n\n')
+    journal_info = {
+        'title': journal.title, 
+        'rating': journal.rating, 
+        'entry': journal.entry,
+        'favorite': journal.favorite,
+        'journal_id': journal.journal_id
+    }
+
+    return jsonify(journal_info)
+
+
 # @app.route('/melons.json')
 # def get_melons():
 
@@ -85,7 +110,6 @@ def login():
 #     print('*******')
 
 #     return jsonify(melon_names)
-
         
 
 @app.route('/', defaults={'path': ''})

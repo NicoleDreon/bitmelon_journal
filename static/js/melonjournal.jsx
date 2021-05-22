@@ -1,13 +1,18 @@
 function MelonJournal(props) {
 
     const [allMelons, setAllMelons] = React.useState([]);
-    const [clickedButtonId, setClickedButtonId] = React.useState('');
+    const [melon_name, setMelonName] = React.useState('');
+    const [rating, setRating] = React.useState('');
+    const [entry, setEntry] = React.useState('');
+    const [favorite, setFavorite] = React.useState('');
+    const {userInfo} = props
+    // const [clickedButtonId, setClickedButtonId] = React.useState('');
 
     React.useEffect(()=>{
         fetch('/allmelons.json')
         .then((response) => response.json())
         .then((data) => {
-            console.log("test")
+            // console.log("test")
             setAllMelons(data);
             
         })
@@ -15,11 +20,15 @@ function MelonJournal(props) {
 
     const melonArray = [];
     for (const melon in allMelons) {
+    //    let i = 0
+    //     const name = 'name'+i
         melonArray.push(
+        // console.log(name)    
         <MelonDrop name={allMelons[melon]['name']} />
+        
         )
     }
-    console.log(melonArray)
+    // console.log(melonArray)
 
 function MelonDrop(props) {
     return (
@@ -28,9 +37,27 @@ function MelonDrop(props) {
             </option>
     )
 }
-// need function for form, take 
-// function createJournal(){
-//     preventDefault();
+
+function createJournal(evt){
+    evt.preventDefault();
+    // console.log(evt);
+
+    fetch('/journal.json', {
+        method: 'POST',
+        body: JSON.stringify({'melon_name': melon_name, 'rating': rating, 'entry':entry, 'favorite':favorite }), 
+        headers: {'Content-type': 'application/json'}
+    })
+    .then((response)=> response.json())
+    .then((data) => {
+        setMelonName(data.title);
+        setRating(data.rating);
+        setEntry(data.entry);
+        setFavorite(data.favorite);
+        // console.log();
+    })
+}
+    
+    // console.log()
     // do fetch request here for users inputs
 // }using fetch request to send info to server to have access
 
@@ -51,19 +78,30 @@ function MelonDrop(props) {
             {/* no action */}
             <header>Journal</header>
             {/* need to compare to user */}
-            <form  action="/melonJournal">
+            <form  onSubmit={(evt)=> {createJournal(evt)}}>
                 <label>Title</label>
-                <select name="melon_name" id="malon_name">
-                {melonArray}</select>
+                <select name="melon_name" id="melon_name" onChange={ evt=>{
+                    setMelonName(evt.target.value)
+                }}>
+                <option></option>
+                <option>Honeydew</option>
+                {/* {melonArray} */}
+                </select>
                 <label>Rating</label>
-                <input type="text" name="rating" id="rating" /> 
-                {/* onchange={evt=>{
+                <input type="text" name="rating" id="rating" onChange={ evt=>{
                     setRating(evt.target.value)
-                }} */}
-                {/* need to figure out code for this compart to queentessa */}
+                }}/> 
+                <label>Entry</label>
+                <input type="text" name="entry" id="entry" onChange={ evt=>{
+                    setEntry(evt.target.value)
+                }}>
+                </input>
                 <label>Favorite</label>
-                <input type="text" />
-                <label>Flavor</label>
+                <input type="text" onChange={ evt=>{
+                    setFavorite(evt.target.value)
+                }}/> 
+                {/* should favorite be a yes/no (true or false) */}
+                {/* <label>Flavor</label>
                     <ul>
                         <h6>Sour</h6>
                         <label name="sour">1</label>
@@ -129,10 +167,9 @@ function MelonDrop(props) {
                         <label name="savory">5</label>
                         <input type="radio" name="savory" id="5"/>
                     </ul>
-                <label>Image</label>
-                <button>Button</button>
+                <label>Image</label> */}
+                <button type="submit">Create Entry</button>
             </form>
-           {/* <script>const getMelon {for(let melon of melonArray)}</script> */}
         </div>
     )
 }

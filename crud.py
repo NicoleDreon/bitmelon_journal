@@ -27,12 +27,17 @@ def get_melons():
 
     return melons
 
+def get_melon_obj(melon_name):
+    return Melon.query.filter(Melon.melon_name == melon_name).first()
+
+
+
 def get_all_melons():
     return Melon.query.all()
 
-def create_journal(title,rating,entry,favorite,melon,user,flavor):
+def create_journal(title,rating,entry,favorite,melon,user):
 
-    journal=Journal_entry(title=title,rating=rating,entry=entry,favorite=favorite,melon=melon,user=user,flavor=flavor)
+    journal=Journal_entry(title=title,rating=rating,entry=entry,favorite=favorite,melon=melon,user=user)
     db.session.add(journal)
     db.session.commit()
     return journal
