@@ -68,7 +68,13 @@ def journal():
     rating = int(rating)
     entry = request.json.get('entry')
     favorite = request.json.get('favorite')
-    favorite = bool(favorite) #always reverting to true
+
+    if favorite == 'True':
+        favorite = True
+    elif favorite == 'False':
+        favorite = False
+
+    # favorite = bool(favorite) #always reverting to true
 
     title= melon_name
     user = crud.get_user('sameea@gmail.com')

@@ -97,9 +97,12 @@ function createJournal(evt){
                 }}>
                 </input>
                 <label>Favorite</label>
-                <input type="text" onChange={ evt=>{
+                <select name="favorite" id="favorite" onChange={ evt=>{
                     setFavorite(evt.target.value)
-                }}/> 
+                }}>
+                <option value='True'>Yes</option>
+                <option value='False'>No</option>
+                </select>
                 {/* should favorite be a yes/no (true or false) */}
                 {/* <label>Flavor</label>
                     <ul>
