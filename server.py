@@ -81,7 +81,7 @@ def journal():
     user = crud.get_user(email)
     journal = crud.create_journal(title,rating,entry,favorite,melon, user)
     print('****************', user, '*****************')
-    
+
     # print(f'\n\n\n{journal}\n\n\n')
     journal_info = {
         'title': journal.title, 
@@ -94,10 +94,11 @@ def journal():
     return jsonify(journal_info)
 
 
-@app.route('/showjournals.json')
+@app.route('/showjournals.json', methods=['POST'])
 def show_journals():
 
-    user = crud.get_user('sameea@gmail.com')
+    email = request.json.get('email')
+    user = crud.get_user(email)
     alljournals = crud.get_user_journals(user.user_id)
     dict_journals={}
 
