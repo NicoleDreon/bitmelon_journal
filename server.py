@@ -77,10 +77,12 @@ def journal():
     # favorite = bool(favorite) #always reverting to true
 
     title= melon_name
-    user = crud.get_user('sameea@gmail.com')
+    email = request.json.get('email')
+    user = crud.get_user(email)
     journal = crud.create_journal(title,rating,entry,favorite,melon, user)
-
-    print(f'\n\n\n{journal}\n\n\n')
+    print('****************', user, '*****************')
+    
+    # print(f'\n\n\n{journal}\n\n\n')
     journal_info = {
         'title': journal.title, 
         'rating': journal.rating, 
@@ -110,7 +112,7 @@ def show_journals():
         dict_journals[i]=dict_p
         i=i+1
     
-    print("**************",dict_journals,"*******************")
+    # print("**************",dict_journals,"*******************")
 
     return jsonify(dict_journals)
 
