@@ -57,14 +57,15 @@ function MelonMemory(props) {
         console.log(journal[j]['title'])
         journalArray.push(
             
-        <MemoryDrop name={journal[j]['title']} id={journal[j]['journal_id']} /> 
+        <MemoryDrop name={journal[j]['title']} id={journal[j]['id']} /> 
         )
     }
     console.log(journalArray)
 
     function MemoryDrop(props) {
+        console.log("samee",props.id)
         return (
-            <option key= {props.name} value={props.name} id = {props.id}>
+            <option key= {props.id} value={props.id} id = {props.id}>
                 {props.name}
             </option>
         )
