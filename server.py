@@ -110,6 +110,7 @@ def show_journals():
         dict_p['title']=journal.title
         dict_p['rating']=journal.rating
         dict_p['entry']= journal.entry
+        dict_p['id']= journal.journal_id
         dict_journals[i]=dict_p
         i=i+1
     
@@ -129,7 +130,7 @@ def memory():
     memory = request.json.get('memory')
     date = request.json.get('date')
     friend = request.json.get('friend')
-    journal = request.json.get('journal_name')
+    journal = request.json.get('journal_id')
     # journal_id = 1
     melon_img = None
     print('*******************', journal, '************************')
