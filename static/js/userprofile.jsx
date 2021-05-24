@@ -8,7 +8,7 @@ function UserProfile(props) {
             <h1>{userInfo.user_name}</h1>
             <h6>{userInfo.user_id}</h6>
             <MelonJournal userInfo={userInfo}/>
-            <ShowJournal />
+            <ShowJournal userInfo={userInfo}/>
         </div>
     )
 }

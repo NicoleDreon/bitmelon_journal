@@ -1,11 +1,16 @@
 function ShowJournal(props){
 
+    const {userInfo} = props
     const [allJournals, setAllJournals] = React.useState([]);
 
     function showJournals(evt) {
         evt.preventDefault()
 
-        fetch('/showjournals.json')
+        fetch('/showjournals.json', {
+            method: 'POST',
+            body: JSON.stringify({'email': userInfo.email }), 
+            headers: {'Content-type': 'application/json'}
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log("sent to route")
