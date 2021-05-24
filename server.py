@@ -181,7 +181,7 @@ def show_memories():
         i=i+1
     
     print("**************",dict_memories,"*******************")
-
+    
     return jsonify(dict_memories)
 
         

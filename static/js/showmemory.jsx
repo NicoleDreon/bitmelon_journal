@@ -30,7 +30,7 @@ function ShowMemory(props){
             <Memory memory={memory} location={allMemories[memory]['location']} memory= {allMemories[memory]['memory']} date = {allMemories[memory]['date']} />
         )
     }
-
+ 
     return(
         <div>
             <form  onSubmit={(evt)=> {showMemories(evt)}}>

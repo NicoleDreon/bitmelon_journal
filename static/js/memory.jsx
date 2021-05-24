@@ -7,4 +7,4 @@ function Memory(props) {
             <h4>{props.date}</h4>
         </div>
     )
-}
+} 

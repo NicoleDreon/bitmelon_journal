@@ -69,7 +69,7 @@ def create_memory(journal,memory_img,location,memory,date,friend):
 def get_memory_by_journal(journal):
 
     return Memory.query.filter(Memory.journal_id == journal.journal_id).all()
-
+ 
 
 if __name__ == '__main__':
     from server import app
