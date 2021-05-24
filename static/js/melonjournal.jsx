@@ -45,7 +45,7 @@ function MelonJournal(props) {
 
         fetch('/journal.json', {
             method: 'POST',
-            body: JSON.stringify({'melon_name': melon_name, 'rating': rating, 'entry':entry, 'favorite':favorite }), 
+            body: JSON.stringify({'melon_name': melon_name, 'rating': rating, 'entry':entry, 'favorite':favorite, 'email': userInfo.email }), 
             headers: {'Content-type': 'application/json'}
         })
         .then((response)=> response.json())
@@ -85,6 +85,7 @@ function MelonJournal(props) {
                 <select name="melon_name" id="melon_name" value={melon_name} onChange={ evt=>{
                     setMelonName(evt.target.value)
                 }}>
+                <option></option>
                 {melonArray}
                 </select>
                 <label>Rating</label>
@@ -97,9 +98,10 @@ function MelonJournal(props) {
                 }}>
                 </input>
                 <label>Favorite</label>
-                <select name="favorite" id="favorite" onChange={ evt=>{
+                <select name="favorite" id="favorite" required onChange={ evt=>{
                     setFavorite(evt.target.value)
                 }}>
+                <option></option>
                 <option value='True'>Yes</option>
                 <option value='False'>No</option>
                 </select>
