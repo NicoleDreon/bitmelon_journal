@@ -151,53 +151,39 @@ def memory():
     return jsonify(memory_info)
 
 
-# @app.route('/showmemories.json', methods=['POST'])
-# def show_journals():
+@app.route('/showmemories.json', methods=['POST'])
+def show_memories():
 
-#     email = request.json.get('email')
-#     user = crud.get_user(email)
-#     alljournals = crud.get_user_journals(user.user_id)
-#     dict_journals={}
+    # journal_id = request.json.get('journal_id')
+    user_id = request.json.get('user_id')
+    journals = crud.get_journal_by_user_id(user_id)
+    print("******************", journals, "******************")
 
-#     print(user)
+    allmemories=[]
+    for j in journals:
+        item = crud.get_memory_by_journal(j)
+        allmemories.append(item)
+        print(item)
 
-#     i=0
-#     for journal in alljournals:
-#         dict_p={}
-#         dict_p['title']=journal.title
-#         dict_p['rating']=journal.rating
-#         dict_p['entry']= journal.entry
-#         dict_journals[i]=dict_p
-#         i=i+1
+    dict_memories={}
+
+    print(allmemories)
+
+    i=0
+    for memory in allmemories:
+        dict_p={}
+        print("****************", memory[0], "*******************")
+        dict_p['location']=memory[0].location
+        dict_p['memory']=memory[0].memory
+        dict_p['date']= memory[0].date
+        dict_p['friend']= memory[0].friend
+        dict_memories[i]=dict_p
+        i=i+1
     
-#     # print("**************",dict_journals,"*******************")
+    print("**************",dict_memories,"*******************")
 
-#     return jsonify(dict_journals)
+    return jsonify(dict_memories)
 
-# @app.route('/melons.json')
-# def get_melons():
-
-#     melons = crud.get_melons()
-
-#     melon_dicts = []
-#     melon_names = []
-#     for melon in melons:
-#         melon_dict = {}
-#         melon_dict['melon_id'] = melon.melon_id
-#         melon_dict['melon_name'] = melon.melon_name
-#         melon_dict['melon_img'] = melon.melon_img
-#         melon_dict['description'] = melon.description
-#         melon_dicts.append(melon_dict)
-
-#     for melon in melons:
-#         name = melon.melon_name
-#         melon_names.append(name)
-        
-#     print('*******')
-#     print(melon_names)
-#     print('*******')
-
-#     return jsonify(melon_names)
         
 
 @app.route('/', defaults={'path': ''})
