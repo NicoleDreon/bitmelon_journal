@@ -92,6 +92,28 @@ def journal():
     return jsonify(journal_info)
 
 
+@app.route('/showjournals.json')
+def show_journals():
+
+    user = crud.get_user('sameea@gmail.com')
+    alljournals = crud.get_user_journals(user.user_id)
+    dict_journals={}
+
+    print(user)
+
+    i=0
+    for journal in alljournals:
+        dict_p={}
+        dict_p['title']=journal.title
+        dict_p['rating']=journal.rating
+        dict_p['entry']= journal.entry
+        dict_journals[i]=dict_p
+        i=i+1
+    
+    print("**************",dict_journals,"*******************")
+
+    return jsonify(dict_journals)
+
 # @app.route('/melons.json')
 # def get_melons():
 
