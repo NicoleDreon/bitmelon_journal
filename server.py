@@ -101,7 +101,7 @@ def show_journals():
     user = crud.get_user(email)
     alljournals = crud.get_user_journals(user.user_id)
     dict_journals={}
-
+    
     print(user)
 
     i=0
@@ -116,6 +116,62 @@ def show_journals():
     # print("**************",dict_journals,"*******************")
 
     return jsonify(dict_journals)
+
+
+@app.route('/memory.json', methods=['POST'])
+def memory():
+
+    melon_name = request.json.get('melon_name')
+    
+    melon = crud.get_melon_obj(melon_name)
+
+    location = request.json.get('location')
+    memory = request.json.get('memory')
+    date = request.json.get('date')
+    friend = request.json.get('friend')
+    journal = request.json.get('journal_name')
+    # journal_id = 1
+    melon_img = None
+    print('*******************', journal, '************************')
+
+    memory = crud.create_memory(journal, melon_img, location, memory, date, friend)
+
+    print('****************', memory, '*****************')
+
+    # print(f'\n\n\n{journal}\n\n\n')
+    memory_info = {
+        'location': memory.location, 
+        'memory': memory.memory, 
+        'date': memory.date,
+        'friend': memory.friend,
+        'memory_id': memory.memory_id
+    }
+
+    return jsonify(memory_info)
+
+
+# @app.route('/showmemories.json', methods=['POST'])
+# def show_journals():
+
+#     email = request.json.get('email')
+#     user = crud.get_user(email)
+#     alljournals = crud.get_user_journals(user.user_id)
+#     dict_journals={}
+
+#     print(user)
+
+#     i=0
+#     for journal in alljournals:
+#         dict_p={}
+#         dict_p['title']=journal.title
+#         dict_p['rating']=journal.rating
+#         dict_p['entry']= journal.entry
+#         dict_journals[i]=dict_p
+#         i=i+1
+    
+#     # print("**************",dict_journals,"*******************")
+
+#     return jsonify(dict_journals)
 
 # @app.route('/melons.json')
 # def get_melons():
