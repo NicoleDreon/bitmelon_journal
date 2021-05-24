@@ -8,7 +8,7 @@ function ShowMemory(props){
 
         fetch('/showmemories.json', {
             method: 'POST',
-            body: JSON.stringify({'email': userInfo.email }), 
+            body: JSON.stringify({'user_id': userInfo.user_id }), 
             headers: {'Content-type': 'application/json'}
         })
         .then((response) => response.json())
@@ -30,7 +30,7 @@ function ShowMemory(props){
             <Memory memory={memory} location={allMemories[memory]['location']} memory= {allMemories[memory]['memory']} date = {allMemories[memory]['date']} />
         )
     }
-
+ 
     return(
         <div>
             <form  onSubmit={(evt)=> {showMemories(evt)}}>
