@@ -21,7 +21,7 @@ function App() {
                         <UserProfile userInfo={userInfo}/>
                         <MelonJournal />                      
                         <MelonMemory />
-                        <MelonWanted />
+                        {/* <MelonsTried /> */}
                     </ReactRouterDOM.Route>
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path={["/logout", "/userprofile", "/favorites"]}>
@@ -37,9 +37,9 @@ function App() {
                 <ReactRouterDOM.Route exact path="/userprofile">
                 
                         <UserProfile userInfo={userInfo}/>
-                        <MelonJournal />                      
+                        <MelonJournal userInfo={userInfo}/>                      
                         <MelonMemory />
-                        <MelonWanted />
+                        {/* <MelonsTried /> */}
                 </ReactRouterDOM.Route>
                
 
@@ -54,6 +54,9 @@ function App() {
                 <ReactRouterDOM.Route exact path="/login">
                     <Login userInfo={userInfo} setUserInfo={setUserInfo}/>
                     <UserProfile userInfo={userInfo} setUserInfo={setUserInfo}/>
+                    <MelonJournal userInfo={userInfo}/>
+                    {/* <MelonsTried userInfo={userInfo}/> */}
+                    <ShowJournal />
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/allmelons">

@@ -42,6 +42,10 @@ def create_journal(title,rating,entry,favorite,melon,user):
     db.session.commit()
     return journal
 
+def get_user_journals(user_id):
+
+    return Journal_entry.query.filter(Journal_entry.user_id == user_id).all()
+
 def create_flavor(sour, bitter, sweet, salty, savory):
 
     flavor = Flavor(sour=sour,bitter=bitter,sweet=sweet,salty=salty,savory=savory)
