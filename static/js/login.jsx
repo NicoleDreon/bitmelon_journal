@@ -17,6 +17,7 @@ function Login(props) {
         .then((data) => {
             console.log(data);
             props.setUserInfo(data);
+            props.setShowComponent(true);
         })
     }
 

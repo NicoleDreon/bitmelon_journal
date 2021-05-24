@@ -1,6 +1,6 @@
 function App() {
     const [userInfo, setUserInfo] = React.useState([]);
-//maybe add isLoggedIn to state?
+    const [showComponent, setShowComponent] = React.useState(false)
 
 
     return (
@@ -52,11 +52,7 @@ function App() {
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/login">
-                    <Login userInfo={userInfo} setUserInfo={setUserInfo}/>
-                    <UserProfile userInfo={userInfo} setUserInfo={setUserInfo}/>
-                    <MelonJournal userInfo={userInfo}/>
-                    {/* <MelonsTried userInfo={userInfo}/> */}
-                    <ShowJournal />
+                    { showComponent ? <UserProfile userInfo={userInfo} setUserInfo={setUserInfo}/> : <Login userInfo={userInfo} setUserInfo={setUserInfo} showComponent={showComponent} setShowComponent={setShowComponent}/> }
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/allmelons">

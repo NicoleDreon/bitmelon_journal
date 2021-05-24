@@ -33,9 +33,9 @@ function MelonJournal(props) {
 
     function MelonDrop(props) {
         return (
-                <option>
+            <option key= {props.name} value={props.name} id = {props.name}>
                 {props.name}
-                </option>
+            </option>
         )
     }
 
@@ -82,12 +82,10 @@ function MelonJournal(props) {
             {/* need to compare to user */}
             <form  onSubmit={(evt)=> {createJournal(evt)}}>
                 <label>Title</label>
-                <select name="melon_name" id="melon_name" onChange={ evt=>{
+                <select name="melon_name" id="melon_name" value={melon_name} onChange={ evt=>{
                     setMelonName(evt.target.value)
                 }}>
-                <option></option>
-                <option>Honeydew</option>
-                {/* {melonArray} */}
+                {melonArray}
                 </select>
                 <label>Rating</label>
                 <input type="text" name="rating" id="rating" onChange={ evt=>{
