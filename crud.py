@@ -55,7 +55,7 @@ def create_flavor(sour, bitter, sweet, salty, savory):
 
 def create_memory(journal,memory_img,location,memory,date,friend):
 
-    memory = Memory(journal=journal,memory_img=memory_img,memory=memory,date=date,friend=friend,location=location)
+    memory = Memory(journal_id=journal,memory_img=memory_img,memory=memory,date=date,friend=friend,location=location)
     db.session.add(memory)
     db.session.commit()
     return memory
