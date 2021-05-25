@@ -33,7 +33,7 @@ function Login(props) {
                 <input type="password" name="password" id="password" onChange={ evt => {
                     setPassword(evt.target.value)
                 }}/>
-                <button type="submit">Login</button>
+                <button id="login_btn" type="submit">Login</button>
             </form>
         </div>
     );

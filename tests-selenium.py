@@ -10,22 +10,31 @@ chrome_options.add_argument("--no-sandbox")
 browser = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),
                            options=chrome_options)
 
+class TestLogin(unittest.TestCase):
 
-def test_login(self):
-        self.browser.get('http://localhost:5000/login')
+    def setUp(self):
+        self.browser = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"), 
+                                        options=chrome_options)
 
-        email = self.browser.find_element_by_id('email')
-        email.send_keys("sameea@gmail.com")
-        password = self.browser.find_element_by_id('password')
-        password.send_keys("123")
+    def tearDown(self):
+        self.browser.quit()
 
-        btn = self.browser.get_attribute('submit')
-        btn.click()
+    def test_login(self):
+            self.browser.get('http://localhost:5000/login')
 
-        # result = self.browser.find_element_by_id('result')
-        # self.assertEqual(result.text, "7")
 
-        browser.quit()
+            email = self.browser.find_element_by_id('email')
+            email.send_keys("sameea@gmail.com")
+            password = self.browser.find_element_by_id('password')
+            password.send_keys("123")
+
+            btn = self.browser.find_element_by_id('login_btn')
+            btn.click()
+
+            result = self.browser.find_element_by_id('userprofile_header')
+            self.assertEqual(result.text, "Sameea")
+
+            browser.quit()
 
 
 class TestMelonjournal(unittest.TestCase):
