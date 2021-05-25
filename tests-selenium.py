@@ -1,3 +1,4 @@
+import time
 import os
 import unittest  
 from selenium import webdriver  
@@ -30,6 +31,8 @@ class TestLogin(unittest.TestCase):
 
             btn = self.browser.find_element_by_id('login_btn')
             btn.click()
+
+            time.sleep(1)
 
             result = self.browser.find_element_by_id('userprofile_header')
             self.assertEqual(result.text, "Sameea")

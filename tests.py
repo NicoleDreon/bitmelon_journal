@@ -2,18 +2,18 @@ from unittest import TestCase
 from server import app, journal
 from test_model import Journal_entry, Melon, Memory, User, connect_to_db, db 
 from datetime import date
+import json 
 
 
 def test_data():
     """Create some sample data."""
 
     # In case this is run more than once, empty out existing data
+    Memory.query.delete()
+    Journal_entry.query.delete()
     User.query.delete()
     Melon.query.delete()
-    Journal_entry.query.delete()
-    Memory.query.delete()
     
-
     
     # Add sample User, melon, journal_entrY. and memory
     carol = User(user_name='CarolT', password='t2455xx', email='carolt@gmail.com')
@@ -82,13 +82,13 @@ class FlaskTestsJournalEntry(TestCase):
     def test_journalentry(self):
         """  Can we add a journal entry and/or memory to the database?  """
        #TODO NOT WORKING
-
-        result = self.client.post('/journal.json',
-                                data={'title': 'pepino.melon_name', 'rating':5, 
+        data={'melon_name': 'pepino.melon_name', 'rating':5, 
                                 'entry':'The best melon I have ever tasted', 'favorite':True,
-                                'memory':'Still the best melon I ever tasted', 'location':'Upper P, Michigan',
-                                'friend': 'Sherry', 'date': date.today()}, follow_redirects=True)
+                                'email': 'carolt@gmail.com'} 
+        data= json.dumps(data)
+        result = self.client.post('/journal.json', data=data, follow_redirects=True, content_type='application/json')
         self.assertIn(b'Memory Location', result.data)
+
 
     def tearDown(self):
         """Do at end of every test."""
