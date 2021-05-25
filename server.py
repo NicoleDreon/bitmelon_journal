@@ -170,8 +170,11 @@ def show_memories():
     print("******************", journals, "******************")
 
     allmemories=[]
+    melon_name=[]
     for j in journals:
         item = crud.get_memory_by_journal(j)
+        
+        melon_name.append((crud.get_melon_id(j.melon_id)).melon_name)
         allmemories.append(item)
         print(item)
 
@@ -180,6 +183,7 @@ def show_memories():
     print(allmemories)
 
     i=0
+    j=0
     for memories in allmemories:
         dict_p={}
         print("****************", memories, "*******************")
@@ -187,10 +191,12 @@ def show_memories():
         for memory in memories:
             dict_p['location']=memory.location
             dict_p['memory']=memory.memory
-            dict_p['date']= memory.date
+            dict_p['date']= (memory.date).strftime("%A, %d %B %Y")
             dict_p['friend']= memory.friend
+            dict_p['name'] = melon_name[j]
             dict_memories[i]=dict_p
             i=i+1
+        j=j+1
     
     print("**************",dict_memories,"*******************")
     

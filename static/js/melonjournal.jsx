@@ -1,24 +1,53 @@
 function MelonJournal(props) {
 
     const [allMelons, setAllMelons] = React.useState([]);
+    
+    const {userInfo} = props
+    const [journalDropdownComponent,setJournalDropdownComponent] = React.useState(false)
+
+
+
+    function journalDropdown(evt) {
+        evt.preventDefault()
+        fetch('/allmelons.json')
+        .then((response) => response.json())
+        .then((data) => {
+        // console.log("test")
+        setAllMelons(data);
+        setJournalDropdownComponent(true)
+        console.log(allMelons)
+                
+        })
+        
+    }
+
+
+    return (
+        
+        <div>
+            {/* no action */}
+            <header></header>
+            {/* <h2>Melons for {userInfo.user_name}</h2> */}
+            {/* need to compare to user */}
+            <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
+                <button>Create Journal</button>
+            </form>
+            { journalDropdownComponent ? <JournalForm allMelons={allMelons} email={userInfo.email}  />:null}
+
+        </div>
+    )
+}
+
+
+function JournalForm(props){
+
     const [melon_name, setMelonName] = React.useState('');
     const [rating, setRating] = React.useState('');
     const [entry, setEntry] = React.useState('');
     const [favorite, setFavorite] = React.useState('');
-    const {userInfo} = props
+    const allMelons= props.allMelons
     
-    // const [clickedButtonId, setClickedButtonId] = React.useState('');
-
-    React.useEffect(()=>{
-        fetch('/allmelons.json')
-        .then((response) => response.json())
-        .then((data) => {
-            // console.log("test")
-            setAllMelons(data);
-            
-        })
-    }, [])
-
+    
     const melonArray = [];
     for (const melon in allMelons) {
     //    let i = 0
@@ -45,7 +74,7 @@ function MelonJournal(props) {
 
         fetch('/journal.json', {
             method: 'POST',
-            body: JSON.stringify({'melon_name': melon_name, 'rating': rating, 'entry':entry, 'favorite':favorite, 'email': userInfo.email }), 
+            body: JSON.stringify({'melon_name': melon_name, 'rating': rating, 'entry':entry, 'favorite':favorite, 'email': props.email }), 
             headers: {'Content-type': 'application/json'}
         })
         .then((response)=> response.json())
@@ -54,34 +83,14 @@ function MelonJournal(props) {
             setRating(data.rating);
             setEntry(data.entry);
             setFavorite(data.favorite);
+            
             // console.log();
         })
     }
-    
-        // console.log()
-        // do fetch request here for users inputs
-        // }using fetch request to send info to server to have access
 
-        // deconstruct props
-        // is logged in state should be in app parent so other components 
-        // can use that state
-
-        // need onclick on button/onsubmit on form not action 
-        // we need to grab information from user as props.setUserInfo
-        // does our state for journal entry need to be available for any children components?
-        // like Memory
-        // when we get information from form on server need to useCallback
-        // request.json.get not form
-
-    return (
-        
-        <div>
-            {/* no action */}
-            <header>Journal</header>
-            <h2>Melons for {userInfo.user_name}</h2>
-            {/* need to compare to user */}
-            <form  onSubmit={(evt)=> {createJournal(evt)}}>
-                <label>Title</label>
+    return(
+        <form  onSubmit={(evt)=> {createJournal(evt)}}>
+                <label>Select Melon</label>
                 <select name="melon_name" id="melon_name" value={melon_name} onChange={ evt=>{
                     setMelonName(evt.target.value)
                 }}>
@@ -107,6 +116,5 @@ function MelonJournal(props) {
                 </select>
                 <button type="submit">Create Entry</button>
             </form>
-        </div>
     )
 }
