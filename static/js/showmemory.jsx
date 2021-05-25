@@ -1,42 +1,42 @@
-function ShowJournal(props){
+function ShowMemory(props){
 
     const {userInfo} = props
-    const [allJournals, setAllJournals] = React.useState([]);
+    const [allMemories, setAllMemories] = React.useState([]);
 
-    function showJournals(evt) {
+    function showMemories(evt) {
         evt.preventDefault()
 
-        fetch('/showjournals.json', {
+        fetch('/showmemories.json', {
             method: 'POST',
-            body: JSON.stringify({'email': userInfo.email }), 
+            body: JSON.stringify({'user_id': userInfo.user_id }), 
             headers: {'Content-type': 'application/json'}
         })
         .then((response) => response.json())
         .then((data) => {
             console.log("sent to route")
-            setAllJournals(data);
+            setAllMemories(data);
             console.log("did not send to route 1")
 
         })
         console.log("did not send to route 2")
     }
 
-    const journalDiv = [];
-    for (const journal in allJournals) {
+    const memoryDiv = [];
+    for (const memory in allMemories) {
         // updateDetails is the callback function we'll use when the button is clicked
-        journalDiv.push(
+        memoryDiv.push(
             // Give each button a unique key so that React can identify it.
             
-            <Journal journal={journal} title={allJournals[journal]['title']} rating= {allJournals[journal]['rating']} entry = {allJournals[journal]['entry']} />
+            <Memory memory={memory} location={allMemories[memory]['location']} memory= {allMemories[memory]['memory']} date = {allMemories[memory]['date']} />
         )
     }
-
+ 
     return(
         <div>
-            <form  onSubmit={(evt)=> {showJournals(evt)}}>
-                <button>See Journals</button>
+            <form  onSubmit={(evt)=> {showMemories(evt)}}>
+                <button>See Memories</button>
             </form>
-            {journalDiv}
+            {memoryDiv}
 
         </div>
     )

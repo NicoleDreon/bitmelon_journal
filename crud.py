@@ -42,6 +42,16 @@ def create_journal(title,rating,entry,favorite,melon,user):
     db.session.commit()
     return journal
 
+def get_user_journals(user_id):
+
+    return Journal_entry.query.filter(Journal_entry.user_id == user_id).all()
+
+
+def get_journal_by_user_id(user_id):
+
+    return Journal_entry.query.filter(Journal_entry.user_id == user_id).all()
+
+
 def create_flavor(sour, bitter, sweet, salty, savory):
 
     flavor = Flavor(sour=sour,bitter=bitter,sweet=sweet,salty=salty,savory=savory)
@@ -51,12 +61,15 @@ def create_flavor(sour, bitter, sweet, salty, savory):
 
 def create_memory(journal,memory_img,location,memory,date,friend):
 
-    memory = Memory(journal=journal,memory_img=memory_img,memory=memory,date=date,friend=friend,location=location)
+    memory = Memory(journal_id=journal,memory_img=memory_img,memory=memory,date=date,friend=friend,location=location)
     db.session.add(memory)
     db.session.commit()
     return memory
 
+def get_memory_by_journal(journal):
 
+    return Memory.query.filter(Memory.journal_id == journal.journal_id).all()
+ 
 
 if __name__ == '__main__':
     from server import app

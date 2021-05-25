@@ -72,13 +72,21 @@ def journal():
     rating = int(rating)
     entry = request.json.get('entry')
     favorite = request.json.get('favorite')
-    favorite = bool(favorite) #always reverting to true
+
+    if favorite == 'True':
+        favorite = True
+    elif favorite == 'False':
+        favorite = False
+
+    # favorite = bool(favorite) #always reverting to true
 
     title= melon_name
-    user = crud.get_user('sameea@gmail.com')
+    email = request.json.get('email')
+    user = crud.get_user(email)
     journal = crud.create_journal(title,rating,entry,favorite,melon, user)
+    print('****************', user, '*****************')
 
-    print(f'\n\n\n{journal}\n\n\n')
+    # print(f'\n\n\n{journal}\n\n\n')
     journal_info = {
         'title': journal.title, 
         'rating': journal.rating, 
@@ -90,30 +98,96 @@ def journal():
     return jsonify(journal_info)
 
 
-# @app.route('/melons.json')
-# def get_melons():
+@app.route('/showjournals.json', methods=['POST'])
+def show_journals():
 
-#     melons = crud.get_melons()
+    email = request.json.get('email')
+    user = crud.get_user(email)
+    alljournals = crud.get_user_journals(user.user_id)
+    dict_journals={}
+    
+    print(user)
 
-#     melon_dicts = []
-#     melon_names = []
-#     for melon in melons:
-#         melon_dict = {}
-#         melon_dict['melon_id'] = melon.melon_id
-#         melon_dict['melon_name'] = melon.melon_name
-#         melon_dict['melon_img'] = melon.melon_img
-#         melon_dict['description'] = melon.description
-#         melon_dicts.append(melon_dict)
+    i=0
+    for journal in alljournals:
+        dict_p={}
+        dict_p['title']=journal.title
+        dict_p['rating']=journal.rating
+        dict_p['entry']= journal.entry
+        dict_p['id']= journal.journal_id
+        dict_journals[i]=dict_p
+        i=i+1
+    
+    # print("**************",dict_journals,"*******************")
 
-#     for melon in melons:
-#         name = melon.melon_name
-#         melon_names.append(name)
-        
-#     print('*******')
-#     print(melon_names)
-#     print('*******')
+    return jsonify(dict_journals)
 
-#     return jsonify(melon_names)
+
+@app.route('/memory.json', methods=['POST'])
+def memory():
+
+    melon_name = request.json.get('melon_name')
+    
+    melon = crud.get_melon_obj(melon_name)
+
+    location = request.json.get('location')
+    memory = request.json.get('memory')
+    date = request.json.get('date')
+    friend = request.json.get('friend')
+    journal = request.json.get('journal_id')
+    # journal_id = 1
+    melon_img = None
+    print('*******************', journal, '************************')
+
+    memory = crud.create_memory(journal, melon_img, location, memory, date, friend)
+
+    print('****************', memory, '*****************')
+
+    # print(f'\n\n\n{journal}\n\n\n')
+    memory_info = {
+        'location': memory.location, 
+        'memory': memory.memory, 
+        'date': memory.date,
+        'friend': memory.friend,
+        'memory_id': memory.memory_id
+    }
+
+    return jsonify(memory_info)
+
+
+@app.route('/showmemories.json', methods=['POST'])
+def show_memories():
+
+    # journal_id = request.json.get('journal_id')
+    user_id = request.json.get('user_id')
+    journals = crud.get_journal_by_user_id(user_id)
+    print("******************", journals, "******************")
+
+    allmemories=[]
+    for j in journals:
+        item = crud.get_memory_by_journal(j)
+        allmemories.append(item)
+        print(item)
+
+    dict_memories={}
+
+    print(allmemories)
+
+    i=0
+    for memory in allmemories:
+        dict_p={}
+        print("****************", memory[0], "*******************")
+        dict_p['location']=memory[0].location
+        dict_p['memory']=memory[0].memory
+        dict_p['date']= memory[0].date
+        dict_p['friend']= memory[0].friend
+        dict_memories[i]=dict_p
+        i=i+1
+    
+    print("**************",dict_memories,"*******************")
+    
+    return jsonify(dict_memories)
+
         
 
 @app.route('/', defaults={'path': ''})
