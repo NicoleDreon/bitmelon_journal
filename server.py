@@ -7,6 +7,8 @@ import crud
 app = Flask(__name__)
 
 
+# Test that we can see all melons in database 
+
 @app.route('/allmelons.json')
 def all_melons():
 
@@ -27,6 +29,8 @@ def all_melons():
    
     return jsonify(dict_melon)
 
+
+# Test that user can login
 
 @app.route('/login.json', methods=['POST'])
 def login():
@@ -51,7 +55,7 @@ def login():
             return 'incorrect password'
     return 'no user available'
 
-
+# Test that a user can create a journal entry, Select a melon, and See all journal entries
 
 @app.route('/journal.json', methods=['POST'])
 def journal():
