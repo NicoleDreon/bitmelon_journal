@@ -81,7 +81,7 @@ class FlaskTestsJournalEntry(TestCase):
 
     def test_journalentry(self):
         """  Can we add a journal entry and/or memory to the database?  """
-       #TODO NOT WORKING
+      
         data={'melon_name': 'pepino.melon_name', 'rating':5, 
                                 'entry':'The best melon I have ever tasted', 'favorite':True,
                                 'email': 'carolt@gmail.com'} 
