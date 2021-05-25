@@ -1,10 +1,12 @@
 function Memory(props) {
     return (
-        <div className="col-3" >
-            <h1>Here are your memories!</h1>
-            <h2>{props.location}</h2>
-            <h4>{props.memory}</h4>
-            <h4>{props.date}</h4>
+        <div  ><br/>
+            <h3>{props.melon_name}</h3>
+            <h5>Ate on {props.date} with {props.friend}.</h5>
+           
+            <h3>Location: {props.location}</h3>
+            <h4>Detail: {props.memory}</h4>
+            
         </div>
     )
 } 
