@@ -27,7 +27,7 @@ function ShowJournal(props){
         journalDiv.push(
             // Give each button a unique key so that React can identify it.
             
-            <Journal journal={journal} title={allJournals[journal]['title']} rating= {allJournals[journal]['rating']} entry = {allJournals[journal]['entry']} />
+            <Journal journal={journal} title={allJournals[journal]['title']} rating= {allJournals[journal]['rating']} entry = {allJournals[journal]['entry']} img={allJournals[journal]['img']} />
         )
     }
 
