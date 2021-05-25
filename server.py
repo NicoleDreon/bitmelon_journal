@@ -100,6 +100,10 @@ def show_journals():
     email = request.json.get('email')
     user = crud.get_user(email)
     alljournals = crud.get_user_journals(user.user_id)
+    melons=[]
+    for journal in alljournals:
+        melons.append(crud.get_melon_id(journal.melon_id))
+    
     dict_journals={}
     
     print(user)
@@ -111,6 +115,7 @@ def show_journals():
         dict_p['rating']=journal.rating
         dict_p['entry']= journal.entry
         dict_p['id']= journal.journal_id
+        dict_p['img'] = melons[i].melon_img
         dict_journals[i]=dict_p
         i=i+1
     
@@ -133,6 +138,7 @@ def memory():
     journal = request.json.get('journal_id')
     # journal_id = 1
     melon_img = None
+    print('********sameea',location,memory,date,friend,'*********')
     print('*******************', journal, '************************')
 
     memory = crud.create_memory(journal, melon_img, location, memory, date, friend)
@@ -170,15 +176,17 @@ def show_memories():
     print(allmemories)
 
     i=0
-    for memory in allmemories:
+    for memories in allmemories:
         dict_p={}
-        print("****************", memory[0], "*******************")
-        dict_p['location']=memory[0].location
-        dict_p['memory']=memory[0].memory
-        dict_p['date']= memory[0].date
-        dict_p['friend']= memory[0].friend
-        dict_memories[i]=dict_p
-        i=i+1
+        print("****************", memories, "*******************")
+
+        for memory in memories:
+            dict_p['location']=memory.location
+            dict_p['memory']=memory.memory
+            dict_p['date']= memory.date
+            dict_p['friend']= memory.friend
+            dict_memories[i]=dict_p
+            i=i+1
     
     print("**************",dict_memories,"*******************")
     

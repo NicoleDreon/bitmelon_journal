@@ -58,8 +58,8 @@ function MelonJournal(props) {
         })
     }
     
-            // console.log()
-            // do fetch request here for users inputs
+        // console.log()
+        // do fetch request here for users inputs
         // }using fetch request to send info to server to have access
 
         // deconstruct props
@@ -92,11 +92,11 @@ function MelonJournal(props) {
                 <input type="text" name="rating" id="rating" onChange={ evt=>{
                     setRating(evt.target.value)
                 }}/> 
-                <label>Entry</label>
-                <input type="text" name="entry" id="entry" onChange={ evt=>{
+                <label>Tasting Notes</label>
+                <textarea name="entry" id="entry" onChange={ evt=>{
                     setEntry(evt.target.value)
                 }}>
-                </input>
+                </textarea>
                 <label>Favorite</label>
                 <select name="favorite" id="favorite" required onChange={ evt=>{
                     setFavorite(evt.target.value)
@@ -105,74 +105,6 @@ function MelonJournal(props) {
                 <option value='True'>Yes</option>
                 <option value='False'>No</option>
                 </select>
-                {/* should favorite be a yes/no (true or false) */}
-                {/* <label>Flavor</label>
-                    <ul>
-                        <h6>Sour</h6>
-                        <label name="sour">1</label>
-                        <input type="radio" name="sour" id="1"/>
-                        <label name="sour">2</label>
-                        <input type="radio" name="sour" id="2"/>
-                        <label name="sour">3</label>
-                        <input type="radio" name="sour" id="3"/>
-                        <label name="sour">4</label>
-                        <input type="radio" name="sour" id="4"/>
-                        <label name="sour">5</label>
-                        <input type="radio" name="sour" id="5"/>
-                    </ul>
-                    <ul>
-                        <h6>Sweet</h6>
-                        <label name="sweet">1</label>
-                        <input type="radio" name="sweet" id="1"/>
-                        <label name="sweet">2</label>
-                        <input type="radio" name="sweet" id="2"/>
-                        <label name="sweet">3</label>
-                        <input type="radio" name="sweet" id="3"/>
-                        <label name="sweet">4</label>
-                        <input type="radio" name="sweet" id="4"/>
-                        <label name="sweet">5</label>
-                        <input type="radio" name="sweet" id="5"/>
-                    </ul>
-                    <ul>
-                        <h6>Bitter</h6>
-                        <label name="bitter">1</label>
-                        <input type="radio" name="bitter" id="1"/>
-                        <label name="bitter">2</label>
-                        <input type="radio" name="bitter" id="2"/>
-                        <label name="bitter">3</label>
-                        <input type="radio" name="bitter" id="3"/>
-                        <label name="bitter">4</label>
-                        <input type="radio" name="bitter" id="4"/>
-                        <label name="bitter">5</label>
-                        <input type="radio" name="bitter" id="5"/>
-                    </ul>
-                    <ul>
-                        <h6>Salty</h6>
-                        <label name="salty">1</label>
-                        <input type="radio" name="salty" id="1"/>
-                        <label name="salty">2</label>
-                        <input type="radio" name="salty" id="2"/>
-                        <label name="salty">3</label>
-                        <input type="radio" name="salty" id="3"/>
-                        <label name="salty">4</label>
-                        <input type="radio" name="salty" id="4"/>
-                        <label name="salty">5</label>
-                        <input type="radio" name="salty" id="5"/>
-                    </ul>
-                    <ul>
-                        <h6>Savory</h6>
-                        <label name="savory">1</label>
-                        <input type="radio" name="savory" id="1"/>
-                        <label name="savory">2</label>
-                        <input type="radio" name="savory" id="2"/>
-                        <label name="savory">3</label>
-                        <input type="radio" name="savory" id="3"/>
-                        <label name="savory">4</label>
-                        <input type="radio" name="savory" id="4"/>
-                        <label name="savory">5</label>
-                        <input type="radio" name="savory" id="5"/>
-                    </ul>
-                <label>Image</label> */}
                 <button type="submit">Create Entry</button>
             </form>
         </div>

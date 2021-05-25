@@ -30,6 +30,10 @@ def get_melons():
 def get_melon_obj(melon_name):
     return Melon.query.filter(Melon.melon_name == melon_name).first()
 
+def get_melon_id(id):
+    return Melon.query.get(id)
+
+
 
 
 def get_all_melons():
