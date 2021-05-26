@@ -23,7 +23,7 @@ function AllMelons(props){
     }
 
     return(
-        <div>
+        <div className="row">
             {melonDiv}
         </div>
     )

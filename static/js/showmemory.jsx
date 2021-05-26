@@ -43,4 +43,4 @@ function ShowMemory(props){
         </div>
     )
 
-}
+} 

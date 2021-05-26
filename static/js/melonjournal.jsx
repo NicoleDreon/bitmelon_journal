@@ -127,4 +127,4 @@ function JournalForm(props){
                 </form>
         </div>
     )
-}
+} 

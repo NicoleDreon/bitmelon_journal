@@ -43,4 +43,4 @@ function ShowJournal(props){
         </div>
     )
 
-}
+} 

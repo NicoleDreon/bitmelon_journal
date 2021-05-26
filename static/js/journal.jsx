@@ -17,5 +17,5 @@ function Journal(props) {
             <h4 className="card-body">Favorite: {fav_word}</h4>
             <img className="card-footer img-fluid" src={props.img}  width="100%" height="50%"/>
         </div>
-    )
+    ) 
 }

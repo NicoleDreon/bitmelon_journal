@@ -137,5 +137,5 @@ function FormMemory(props){
         <button type="submit" class="btn btn-primary active">Submit Memory</button>
         </form>
     )
-}
+} 
 

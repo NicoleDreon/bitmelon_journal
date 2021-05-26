@@ -26,7 +26,7 @@ function UserProfile(props) {
                     <ShowMemory userInfo={userInfo}/>
                 </div>
             </div>
-                
+                 
         
         </div>
     )
