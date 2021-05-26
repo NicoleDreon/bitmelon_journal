@@ -30,8 +30,9 @@ function MelonJournal(props) {
             {/* <h2>Melons for {userInfo.user_name}</h2> */}
             {/* need to compare to user */}
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
-                <button class="btn btn-primary active">Create Journal</button>
+                <button id="createJournal" class="btn btn-primary active">Create Journal</button>
             </form>
+            
             { journalDropdownComponent ? <JournalForm allMelons={allMelons} email={userInfo.email}  />:null}
 
         </div>
@@ -123,7 +124,7 @@ function JournalForm(props){
                         <option value='False'>No</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary active">Submit Journal</button>
+                    <button id="journalSubmit" type="submit" class="btn btn-primary active">Submit Journal</button>
                 </form>
         </div>
     )
