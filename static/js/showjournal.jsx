@@ -34,9 +34,11 @@ function ShowJournal(props){
     return(
         <div>
             <form  onSubmit={(evt)=> {showJournals(evt)}}>
-                <button>See Journals</button>
+                <button class="btn btn-primary active">See Journals</button>
             </form>
-            {journalDiv}
+            <div className="row">
+                {journalDiv}
+            </div>
 
         </div>
     )

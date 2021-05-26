@@ -22,18 +22,24 @@ function Login(props) {
     }
 
     return (
-        <div>
+        <div class="col">
             <h1>Login</h1>
             <form onSubmit={(evt) => {loginUser(evt)}}>
-                <label>Email</label>
-                <input type="text" name="email" id="email" onChange={ evt => {
-                    setEmail(evt.target.value)
-                }}/>
-                <label>Password</label>
-                <input type="password" name="password" id="password" onChange={ evt => {
-                    setPassword(evt.target.value)
-                }}/>
-                <button type="submit">Login</button>
+                <div class="form-group w-50">
+                    <div class="col-xs-2">
+                        <label>Email</label>
+                        <input class="form-control" type="text" name="email" id="email" onChange={ evt => {
+                            setEmail(evt.target.value)
+                        }}/>
+                    </div>
+                    <div class="col-xs-2">
+                        <label>Password</label>
+                        <input class="form-control" type="password" name="password" id="password" onChange={ evt => {
+                            setPassword(evt.target.value)
+                        }}/>
+                    </div>
+                    <button type="submit" class="btn btn-primary active">Login</button>
+                </div>
             </form>
         </div>
     );

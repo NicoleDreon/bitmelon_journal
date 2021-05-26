@@ -35,7 +35,7 @@ function MelonMemory(props) {
             <h2>Memories for {userInfo.user_name}</h2> */}
             {/* need to compare to user */}
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
-                <button>Create Memory</button>
+                <button class="btn btn-primary active"> Create Memory</button>
             </form>
 
             { journalDropdownComponent ? <FormMemory journal_id={journal_id} journal={journal} email={userInfo.email}  />:null }
@@ -96,36 +96,46 @@ function FormMemory(props){
     }
 
     return (
-<form  onSubmit={(evt)=> {createMemory(evt)}}>
-<label>Select a Melon that has a Journal</label>
-{/* must be a melon that already has a journal entry */}
-<select name="journal_name" id="journal_name" value={journal_id} onChange={ evt=>{
-    setJournal_id(evt.target.value)
-}}>
-<option></option>
-{journalArray} 
-{/* how can we change this array so that it only shows melons that only have journal entries? */}
-</select>
-<label>Location</label>
-<input type="text" name="location" id="location" onChange={ evt=>{
-    setLocation(evt.target.value)
-}}/>
-<label>Memory</label>
-<input type="text" name="memory" id="memory" onChange={ evt=>{
-    setMemory(evt.target.value)
-}}/> 
-<label>Date</label>
-<input type="date" name="date" id="date" onChange={ evt=>{
-    setDate(evt.target.value)
-}}>
-</input>
-<label>Friend</label>
-<input type="text" name="friend" id="friend" onChange={ evt=>{
-    setFriend(evt.target.value)
-}}>
-</input>
-<button type="submit">Submit Memory</button>
-</form>
+        <form  onSubmit={(evt)=> {createMemory(evt)}}>
+        <div class="form-group">
+            <label>Select a Melon that has a Journal</label>
+            {/* must be a melon that already has a journal entry */}
+            <select class="form-control" name="journal_name" id="journal_name" value={journal_id} onChange={ evt=>{
+                setJournal_id(evt.target.value)
+            }}>
+            <option></option>
+            {journalArray} 
+            {/* how can we change this array so that it only shows melons that only have journal entries? */}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+                <input class="form-control" type="text" name="location" id="location" onChange={ evt=>{
+                    setLocation(evt.target.value)
+                }}/>
+        </div>
+        <div class="form-group">
+            <label>Memory</label>
+            <input class="form-control" type="text" name="memory" id="memory" onChange={ evt=>{
+                setMemory(evt.target.value)
+            }}/> 
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input class="form-control" type="date" name="date" id="date" onChange={ evt=>{
+                setDate(evt.target.value)
+            }}>
+            </input>
+        </div>
+        <div class="form-group">
+            <label>Friend</label>
+            <input class="form-control" type="text" name="friend" id="friend" onChange={ evt=>{
+                setFriend(evt.target.value)
+            }}>
+            </input>
+        </div>
+        <button type="submit" class="btn btn-primary active">Submit Memory</button>
+        </form>
     )
 }
 
