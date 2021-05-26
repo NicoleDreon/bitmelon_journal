@@ -57,7 +57,7 @@ class FlaskTestsAllMelons(TestCase):
                             'url':'https://res.cloudinary.com/dpapvtab4/image/upload/v1621265037/melons/Pepino_Solanum_muricatum_y3a5nu.png'} 
         data= json.dumps(data)
         result = self.client.post('/allmelons.json', data=data, follow_redirects=True, content_type='application/json')
-        self.assertIn(b'sweet cucumber', result.data)
+        self.assertIn(b'Pepino', result.data)
 
     def tearDown(self):
         """Do at end of every test."""
