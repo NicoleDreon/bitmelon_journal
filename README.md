@@ -1,6 +1,4 @@
-# bitmelon_journal
-
-# Mindful Everyday
+# Bitmelon Journal
 
 ## Contents
 
@@ -9,7 +7,6 @@
 - [Documentation](#documentation)
 - [Future State](#future)
 - [Installation](#installation)
-- [Contributing](#contributing)
 
 ## <a name="tech-stack"></a>Tech Stack
 

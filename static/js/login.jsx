@@ -38,7 +38,7 @@ function Login(props) {
                             setPassword(evt.target.value)
                         }}/>
                     </div>
-                    <button type="submit" class="btn btn-primary active">Login</button>
+                    <button id="loginSubmit" type="submit" class="btn btn-primary active">Login</button>
                 </div>
             </form>
         </div>
