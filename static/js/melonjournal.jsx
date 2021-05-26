@@ -32,6 +32,7 @@ function MelonJournal(props) {
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
                 <button id="createJournal" class="btn btn-primary active">Create Journal</button>
             </form>
+            
             { journalDropdownComponent ? <JournalForm allMelons={allMelons} email={userInfo.email}  />:null}
 
         </div>

@@ -37,7 +37,6 @@ function MelonMemory(props) {
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
                 <button id="createMemory" class="btn btn-primary active"> Create Memory</button>
             </form>
-
             { journalDropdownComponent ? <FormMemory journal_id={journal_id} journal={journal} email={userInfo.email}  />:null }
            
         </div>
