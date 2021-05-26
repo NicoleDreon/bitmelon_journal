@@ -5,7 +5,8 @@ from server import app
 from tests import test_data
 from test_model import connect_to_db, db 
 from selenium import webdriver  
-from selenium.webdriver.chrome.options import Options, select
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import Select
 
 chrome_options = Options()  
 chrome_options.add_argument("--headless")
@@ -18,7 +19,7 @@ browser = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),
 class bitMelonJournal(unittest.TestCase):
     """testing user input to login"""
 
-    def setUp(self):
+    def setUp(self): #working
         """Stuff to do before every test."""
 
         app.config['TESTING'] = True
@@ -32,16 +33,16 @@ class bitMelonJournal(unittest.TestCase):
                                         options=chrome_options)
 
 
-    def tearDown(self):
+    def tearDown(self):#working 
         self.browser.quit()
 
         db.session.close()
         db.drop_all()
 
 
-    def login(self):
-        self.browser.get('http://localhost:5000/login')
+    def login(self): #working
 
+        self.browser.get('http://localhost:5000/login')
 
         email = self.browser.find_element_by_id('email')
         email.send_keys("carolt@gmail.com")#need to update with test data
@@ -54,60 +55,55 @@ class bitMelonJournal(unittest.TestCase):
         time.sleep(1)
 
         
-
-    def test_login(self):
+    def test_login(self): #working
 
         self.login()
         result = self.browser.find_element_by_tag_name('h1')
         self.assertTrue('CarolT' in result.text)
 
            
-
-# for journal call self.login()
-
-
-def test_journalEntry(self):
-
-        self.browser.get('http://localhost:5000/login')
+    def journalEntry(self): #TODO not working - cannot find melon_name
 
         self.login()
-        #driver or browser
-        melon_select = Select(browser.find_element_by_id('melon_name'))
+
+        # self.browser.get('http://localhost:5000/login')
+            #driver or browser
+
+        melon_select = Select(self.browser.find_element_by_name('melon_name'))
         melon_select.select_by_value('Pepino – Solanum muricatum')
-        # melon_name= self.browser.find_element_by_id('melon_name')
-        # need to click drop down -Pepino – Solanum muricatum
+
         rating = self.browser.find_element_by_id('rating')
         rating.send_keys("5")
+
         tasting_notes = self.browser.find_element_by_id('entry')
         tasting_notes.send_keys("The best melon I have ever tasted")
-        favorite_select = Select(browser.find_element_by_id('favorite'))
+
+        favorite_select = Select(self.browser.find_element_by_id('favorite'))
         favorite_select.select_by_value('Yes')
-        #need to be able to select drop down option - should be true
 
-        # btn = self.browser.find_element_by_xpath("//button[@type='submit']")
-        # #need id on create entry
-        # btn.click()
+        btn = self.browser.find_element_by_id("journalSubmit")
+        btn.click()
 
-        # time.sleep(1)
+            # time.sleep(1)
 
+            # btn = self.browser.find_element_by_id("journalShow")
+            # btn.click()
 
+            # time.sleep(1)
 
-        #there is no change on page- don't know how to assert changes 
-        # result = self.browser.find_element_by_id('userprofile_header')
-        # self.assertEqual(result.text, "Sameea")
+    #  def test_journalEntry(self):   
+
+    #     self.journalEntry()
+
+    #     result = self.browser.find_element_by_tag_name('h2')
+    #     self.assertTrue('Pepino' in result.text)
 
 #             
 
 # #melonmemory
 
-# class TestMelonMemory(unittest.TestCase):
+# TestMelonMemory(unittest.TestCase):
 
-#     def setUp(self):
-#         self.browser = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"), 
-#                                         options=chrome_options)
-
-#     def tearDown(self):
-#         self.browser.quit()
 
 #     def test_login(self):
 #             self.browser.get('http://localhost:5000/login')

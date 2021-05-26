@@ -123,7 +123,7 @@ function JournalForm(props){
                         <option value='False'>No</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary active">Submit Journal</button>
+                    <button id="journalSubmit" type="submit" class="btn btn-primary active">Submit Journal</button>
                 </form>
         </div>
     )
