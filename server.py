@@ -120,6 +120,7 @@ def show_journals():
         dict_p['entry']= journal.entry
         dict_p['id']= journal.journal_id
         dict_p['img'] = melons[i].melon_img
+        dict_p['favorite']= journal.favorite
         dict_journals[i]=dict_p
         i=i+1
     
