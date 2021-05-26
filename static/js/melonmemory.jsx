@@ -1,23 +1,3 @@
-// function MelonMemory(props) {
-//     return (
-//         <div>
-//             <header>Memory</header>
-//             <form action="/melonMemory">
-//                 <label>Location</label>
-//                 <input type="text" name="location" id="location"/>
-//                 <label>Memory</label>
-//                 <input type="text" name="melon-memory" id="melon-memory" />
-//                 <label>Date</label>
-//                 <input type="date" />
-//                 <label>Friend</label>
-//                 <input type="text" />
-//                 <label>Image</label>
-//                 <button>Button</button>
-//             </form>
-//         </div>
-//     )
-// }
-
 function MelonMemory(props) {
 
     const [journal, setJournal] = React.useState('');
@@ -49,10 +29,10 @@ function MelonMemory(props) {
 
     return (
         
-        <div>
+<div>
             {/* no action */}
-            <header>Memory</header>
-            <h2>Memories for {userInfo.user_name}</h2>
+            {/* <header>Memory</header>
+            <h2>Memories for {userInfo.user_name}</h2> */}
             {/* need to compare to user */}
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
                 <button>Create Memory</button>
@@ -87,7 +67,6 @@ function FormMemory(props){
     console.log(journalArray)
 
     function MemoryDrop(props) {
-        console.log("samee",props.id)
         return (
             <option key= {props.id} value={props.id} id = {props.id}>
                 {props.name}
@@ -97,7 +76,7 @@ function FormMemory(props){
 
     function createMemory(evt){
         evt.preventDefault();
-         console.log("i am in memory",props.email);
+        
 
         fetch('/memory.json', {
             method: 'POST',
@@ -111,6 +90,7 @@ function FormMemory(props){
             setDate(data.date);
             setFriend(data.friend);
             setJournal_id(data.journal_id);
+
             // console.log();
         })
     }

@@ -27,7 +27,7 @@ function ShowMemory(props){
         memoryDiv.push(
             // Give each button a unique key so that React can identify it.
             
-            <Memory memory={memory} location={allMemories[memory]['location']} memory= {allMemories[memory]['memory']} date = {allMemories[memory]['date']} />
+            <Memory memory={memory} melon_name={allMemories[memory]['name']} location={allMemories[memory]['location']} memory= {allMemories[memory]['memory']} date = {allMemories[memory]['date']} friend={allMemories[memory]['friend']} />
         )
     }
  
