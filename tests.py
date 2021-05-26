@@ -52,12 +52,8 @@ class FlaskTestsAllMelons(TestCase):
     def test_viewallmelons(self):
         """  Can we view all melons in the database?  """
 
-        data={'melon_name': 'Pepino – Solanum muricatum', 'description':'Technically, the Pepino (sweet cucumber) isn’t a melon. It is not a member of the gourd family, Cucurbitaceae.' 
-                            'It isn’t even in the same order as melons, either. That said, culinarily, it is treated like a melon. They look like honeydew and have smooth, mottled skin.',
-                            'url':'https://res.cloudinary.com/dpapvtab4/image/upload/v1621265037/melons/Pepino_Solanum_muricatum_y3a5nu.png'} 
-        data= json.dumps(data)
-        result = self.client.post('/allmelons.json', data=data, follow_redirects=True, content_type='application/json')
-        self.assertIn(b'Pepino', result.data)
+        result = self.client.get('/allmelons.json')
+        self.assertEqual(result.status_code, 200)
 
     def tearDown(self):
         """Do at end of every test."""
@@ -83,13 +79,13 @@ class FlaskTestsJournalEntry(TestCase):
     def test_journalentry(self):
         """  Can we add a journal entry to the database?  """
       
-        data={'melon_name': 'pepino.melon_name', 'rating':5, 
+        data={'melon_name': 'Pepino – Solanum muricatum', 'rating':5, 
                                 'entry':'The best melon I have ever tasted', 'favorite':True,
                                 'email': 'sameea@gmail.com'} 
         data= json.dumps(data)
-        result = self.client.post('/journal.json', data=data, follow_redirects=True, content_type='application/json')
-        self.assertIn(b'Tasting Notes', result.data)
-
+        result = self.client.post('/journal.json', data=data, content_type='application/json')
+        self.assertIn('title', result.json)
+        print(result.json)
 
     def tearDown(self):
         """Do at end of every test."""
@@ -98,7 +94,7 @@ class FlaskTestsJournalEntry(TestCase):
         db.drop_all()
     
 
-class FlaskTestsMemory(TestCase):
+class FlaskTestsAddMemory(TestCase):
    
     def setUp(self):
         """Stuff to do before every test."""
@@ -111,20 +107,24 @@ class FlaskTestsMemory(TestCase):
         db.create_all()
         test_data()
 
-    def test_memory(self):
+    def test_addmemory(self):
         """  Can we add a memory to the database?  """
       
-        data={'journal': 'sameeasjournal.journal_id', 'memory':'Still the best melon I ever tasted!', 'location':'Upper P, Michigan', 'friend':'Sherry', 'date':date.today()}
+        data={'journal_id':'1', 'memory':'Still the best melon I ever tasted', 'location':'Upper P, Michigan', 
+        'friend':'Sherry', 'date':'2021-05-25'}
         data= json.dumps(data)
-        result = self.client.post('/memory.json', data=data, follow_redirects=True, content_type='application/json')
-        self.assertIn(b'Friend', result.data)
-
+        result = self.client.post('/memory.json', data=data, content_type='application/json')
+        self.assertIn('memory', result.json)
+        
+        print('***************************************************************************')
+        print(result.json)
 
     def tearDown(self):
         """Do at end of every test."""
 
         db.session.close()
         db.drop_all()
+    
 
 class FlaskTestsShowJournal(TestCase):
     def setUp(self):
@@ -142,13 +142,43 @@ class FlaskTestsShowJournal(TestCase):
         """Can we retrieve the details of a user journal?"""
 
         result = self.client.get('/showjournals.json')
-        self.assertIn(b"Journal", result.data)
+        self.assertEqual(result.status_code, 200)
 
     def tearDown(self):
         """Do at end of every test."""
 
         db.session.close()
         db.drop_all()
+
+
+class FlaskTestsLogin(TestCase):
+   
+    def setUp(self):
+        """Stuff to do before every test."""
+
+        self.client = app.test_client()
+        app.config['TESTING'] = True
+
+        connect_to_db(app, "postgresql:///testdb")
+
+        db.create_all()
+        test_data()
+
+    def test_login(self):
+        """  Can we login to the application?  """
+      
+        data={'username': 'Sameea', 'user_id': 'sameea.user_id', 'email': 'sameea@gmail.com'} 
+        data= json.dumps(data)
+        result = self.client.post('/login.json', data=data, content_type='application/json')
+        self.assertEqual(result.status_code, 200)
+        print(result.json)
+
+    def tearDown(self):
+        """Do at end of every test."""
+
+        db.session.close()
+        db.drop_all()
+    
 
 
 if __name__ == "__main__":
