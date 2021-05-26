@@ -10,13 +10,12 @@ function Journal(props) {
 
 
     return (
-        <div className="col-6" >
-
-            <h2>{props.title}</h2>
-            <h4>Rating: {props.rating}</h4>
-            <h4>Tasting Notes: {props.entry}</h4>
-            <h4>Favorite: {fav_word}</h4>
-            <img src={props.img}  width="100%" height="50%"/>
+        <div className="card col-3" style={{" marginBottom":"10px"}}>
+            <h2 className="card-header">{props.title}</h2>
+            <h4 className="card-body">Rating: {props.rating}</h4>
+            <h4 className="card-body">Tasting Notes: {props.entry}</h4>
+            <h4 className="card-body">Favorite: {fav_word}</h4>
+            <img className="card-footer img-fluid" src={props.img}  width="100%" height="50%"/>
         </div>
-    )
+    ) 
 }

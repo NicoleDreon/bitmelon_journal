@@ -30,7 +30,7 @@ function MelonJournal(props) {
             {/* <h2>Melons for {userInfo.user_name}</h2> */}
             {/* need to compare to user */}
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
-                <button>Create Journal</button>
+                <button class="btn btn-primary active">Create Journal</button>
             </form>
             { journalDropdownComponent ? <JournalForm allMelons={allMelons} email={userInfo.email}  />:null}
 
@@ -89,32 +89,42 @@ function JournalForm(props){
     }
 
     return(
-        <form  onSubmit={(evt)=> {createJournal(evt)}}>
-                <label>Select Melon</label>
-                <select name="melon_name" id="melon_name" value={melon_name} onChange={ evt=>{
-                    setMelonName(evt.target.value)
-                }}>
-                <option></option>
-                {melonArray}
-                </select>
-                <label>Rating</label>
-                <input type="text" name="rating" id="rating" onChange={ evt=>{
-                    setRating(evt.target.value)
-                }}/> 
-                <label>Tasting Notes</label>
-                <textarea name="entry" id="entry" onChange={ evt=>{
-                    setEntry(evt.target.value)
-                }}>
-                </textarea>
-                <label>Favorite</label>
-                <select name="favorite" id="favorite" required onChange={ evt=>{
-                    setFavorite(evt.target.value)
-                }}>
-                <option></option>
-                <option value='True'>Yes</option>
-                <option value='False'>No</option>
-                </select>
-                <button type="submit">Create Entry</button>
-            </form>
+        <div>
+            <form onSubmit={(evt)=> {createJournal(evt)}}>
+                    <div class="form-group">
+                        <label>Select Melon</label>
+                        <select class="form-control" name="melon_name" id="melon_name" value={melon_name} onChange={ evt=>{
+                            setMelonName(evt.target.value)
+                        }}>
+                        <option></option>
+                        {melonArray}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <input class="form-control" type="text" name="rating" id="rating" onChange={ evt=>{
+                            setRating(evt.target.value)
+                        }}/>
+                    </div> 
+                    <div class="form-group">
+                        <label>Tasting Notes</label>
+                        <textarea class="form-control" name="entry" id="entry" onChange={ evt=>{
+                            setEntry(evt.target.value)
+                        }}>
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Favorite</label>
+                        <select class="form-control" name="favorite" id="favorite" required onChange={ evt=>{
+                            setFavorite(evt.target.value)
+                        }}>
+                        <option></option>
+                        <option value='True'>Yes</option>
+                        <option value='False'>No</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary active">Submit Journal</button>
+                </form>
+        </div>
     )
-}
+} 
