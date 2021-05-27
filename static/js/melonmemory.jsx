@@ -115,7 +115,7 @@ function FormMemory(props){
         </div>
         <div class="form-group">
             <label>Memory</label>
-            <input class="form-control" type="text" name="memory" id="memory" onChange={ evt=>{
+            <textarea class="form-control" name="memory" id="memory" onChange={ evt=>{
                 setMemory(evt.target.value)
             }}/> 
         </div>

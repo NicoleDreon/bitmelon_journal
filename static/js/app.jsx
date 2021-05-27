@@ -9,9 +9,8 @@ function App() {
                 <ReactRouterDOM.Route exact path={["/","/login","/signup", "/allmelons", "/userprofile"]}>
                     <nav id="logout">
                         <ReactRouterDOM.Link to="/"></ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/login">Login | </ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/allmelons">See All Our Melons!</ReactRouterDOM.Link>
-                        <hr></hr>
+                        <ReactRouterDOM.Link to="/login">Login   </ReactRouterDOM.Link>|
+                        <ReactRouterDOM.Link to="/allmelons">   See All Our Melons!</ReactRouterDOM.Link>
                     </nav>
                 </ReactRouterDOM.Route>
             </ReactRouterDOM.Switch>

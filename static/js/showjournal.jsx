@@ -34,7 +34,7 @@ function ShowJournal(props){
     return(
         <div>
             <form  onSubmit={(evt)=> {showJournals(evt)}}>
-                <button id="JournalShow" class="btn btn-primary active">See Journals</button>
+                <button id="journalShow" class="btn btn-primary active">View Melon Journal Entries</button>
             </form>
             
             <div className="row">
