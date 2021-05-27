@@ -62,8 +62,9 @@ class bitMelonJournal(unittest.TestCase):
         result = self.browser.find_element_by_tag_name('h6')
         self.assertTrue('carolt@gmail.com' in result.text)
 
-           
-    def test_journalEntry(self): #TODO not working - cannot find melon_name
+
+    #TODO not working - cannot find melon_name       
+    def test_journalEntry(self): 
 
         self.login()
         time.sleep(1)
@@ -71,9 +72,7 @@ class bitMelonJournal(unittest.TestCase):
         btn = self.browser.find_element_by_id("createJournal")
         btn.click()
         time.sleep(1)
-        # self.browser.get('http://localhost:5000/melonjournal')
-            #driver or browser
-
+  
         melon_select = Select(self.browser.find_element_by_name('melon_name'))
         melon_select.select_by_value('Pepino – Solanum muricatum')
 
@@ -83,18 +82,20 @@ class bitMelonJournal(unittest.TestCase):
         tasting_notes = self.browser.find_element_by_id('entry')
         tasting_notes.send_keys("The best melon I have ever tasted")
 
-        # favorite_select = Select(self.browser.find_element_by_id('favorite'))
-        # favorite_select.select_by_value('Yes')
+        favorite_select = Select(self.browser.find_element_by_id('favorite'))
+        favorite_select.select_by_value('True')
 
-        # btn = self.browser.find_element_by_id("journalSubmit")
-        # btn.click()
+        btn = self.browser.find_element_by_id("journalSubmit")
+        btn.click()
 
-        # time.sleep(1)
+        time.sleep(1)
+        #working up until here- do not keep browswer open if 
+        #server was running app
 
-        # btn = self.browser.find_element_by_id("journalShow")
-        # btn.click()
+        btn = self.browser.find_element_by_id("JournalShow")
+        btn.click()
 
-        # time.sleep(1)
+        time.sleep(1)
 
         # result = self.browser.find_element_by_tag_name('h2')
         # self.assertTrue('Pepino' in result.text)
