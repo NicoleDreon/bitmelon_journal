@@ -97,8 +97,8 @@ class bitMelonJournal(unittest.TestCase):
 
         time.sleep(1)
 
-        # result = self.browser.find_element_by_tag_name('h2')
-        # self.assertTrue('Pepino' in result.text)
+        result = self.browser.find_element_by_tag_name('h2')
+        self.assertTrue('Pepino' in result.text)
 
 
     # def test_melonMemory(self):
