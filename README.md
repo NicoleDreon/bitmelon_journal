@@ -1,8 +1,11 @@
 # Bitmelon Journal
+<<<<<<< HEAD
 
 Our team was tasked with creating a journaling application and given these three requirements: keep track of melons tried, tasting notes, and other memories.
 
 This iteration of Bitmelon Journal was built in just over a week.
+=======
+>>>>>>> main
 
 ## Contents
 

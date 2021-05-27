@@ -34,8 +34,9 @@ function ShowMemory(props){
     return(
         <div>
             <form  onSubmit={(evt)=> {showMemories(evt)}}>
-                <button class="btn btn-primary active">See Memories</button>
+                <button id="memoryShow" class="btn btn-primary active">View Melon Memories</button>
             </form>
+            
             <div className="row">
                 {memoryDiv}
             </div>

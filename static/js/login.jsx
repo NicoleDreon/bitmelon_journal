@@ -22,10 +22,14 @@ function Login(props) {
     }
 
     return (
-        <div class="col">
-            <h1>Login</h1>
+        <div id="homepage-container" style={{ "height":"700px", "borderRadius": "1%","backgroundSize":"cover",
+                backgroundImage: `url("https://isntthiscute.files.wordpress.com/2017/10/tumblr_oss4mqsbrd1ts598co1_1280.gif?w=2000&h=1000")`,  
+              }}>
+                <div class="col">
+            
             <form onSubmit={(evt) => {loginUser(evt)}}>
-                <div class="form-group w-50">
+                <div id="login-container" class="form-group w-50">
+                    <h1>Login</h1>
                     <div class="col-xs-2">
                         <label>Email</label>
                         <input class="form-control" type="text" name="email" id="email" onChange={ evt => {
@@ -38,9 +42,11 @@ function Login(props) {
                             setPassword(evt.target.value)
                         }}/>
                     </div>
-                    <button type="submit" class="btn btn-primary active">Login</button>
+                    <button id="loginSubmit" type="submit" class="btn btn-primary active">Login</button>
                 </div>
             </form>
         </div>
+        </div>
+        
     );
 } 
