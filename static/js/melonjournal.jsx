@@ -102,8 +102,8 @@ function JournalForm(props){
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Rating</label>
-                        <input class="form-control" type="text" name="rating" id="rating" onChange={ evt=>{
+                        <label>Rating (on a scale of 1-5)</label>
+                        <input class="form-control" type="number" min="0" max="5" name="rating" id="rating" onChange={ evt=>{
                             setRating(evt.target.value)
                         }}/>
                     </div> 
