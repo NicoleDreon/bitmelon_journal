@@ -214,6 +214,6 @@ def index(path):
 if __name__ == '__main__':
     from flask import Flask
 
-    # connect_to_db(app)
-    connect_to_db(app, "postgresql:///testdb")
+    connect_to_db(app)
+    # connect_to_db(app, "postgresql:///testdb")
     app.run(host='0.0.0.0', debug=True)
