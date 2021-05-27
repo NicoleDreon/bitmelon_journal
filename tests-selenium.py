@@ -17,7 +17,7 @@ browser = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),
 
 
 class bitMelonJournal(unittest.TestCase):
-    """testing user input to login"""
+    """testing login, journal entry and memory entry"""
 
     def setUp(self): #working
         """Stuff to do before every test."""
@@ -62,8 +62,7 @@ class bitMelonJournal(unittest.TestCase):
         result = self.browser.find_element_by_tag_name('h6')
         self.assertTrue('carolt@gmail.com' in result.text)
 
-
-    #TODO not working - cannot find melon_name       
+      
     def test_journalEntry(self): 
 
         self.login()
@@ -87,40 +86,38 @@ class bitMelonJournal(unittest.TestCase):
 
         btn = self.browser.find_element_by_id("journalSubmit")
         btn.click()
-
         time.sleep(1)
-        #working up until here- do not keep browswer open if 
-        #server was running app
 
         btn = self.browser.find_element_by_id("JournalShow")
         btn.click()
-
         time.sleep(1)
 
         result = self.browser.find_element_by_tag_name('h2')
         self.assertTrue('Pepino' in result.text)
 
 
-    # def test_melonMemory(self):
+    def test_melonMemory(self):
 
-    #     self.login()
+        self.login()
+        time.sleep(1)
 
-    #     self.browser.get('http://localhost:5000/userprofile')
+        btn = self.browser.find_element_by_id("createMemory")
+        btn.click()
+        time.sleep(1)
 
-    #     journal_name_select = Select(self.browser.find_element_by_name('journal_name'))
-    #     journal_name_select.select_by_value('Pepino – Solanum muricatum')
-
-    #     # journal_name= self.browser.find_element_by_id('journal_name')
-    #     # need to click drop down of options for particular user
-    #     location = self.browser.find_element_by_id('location')
-    #     location.send_keys("Southfield, MI")
+        journal_name_select = Select(self.browser.find_element_by_name('journal_name'))
+        journal_name_select.select_by_visible_text('Pepino – Solanum muricatum')
+    #working up until here-
+  
+        location = self.browser.find_element_by_id('location')
+        location.send_keys("Upper P, Michigan")
     #     memory = self.browser.find_element_by_id('memory')
-    #     memory.send_keys("Ate the melon with friends")
+    #     memory.send_keys("Still the best melon I ever tasted")
     #     date = self.browser.find_element_by_id('date')
     #     date.send_keys("05262021")
     #     #need to be able to select date from calendar?
     #     friend = self.browser.find_element_by_id('friend)
-    #     friend.send_keys("Queentesa")
+    #     friend.send_keys("Sherry")
 
 #             btn = self.browser.find_element_by_id('')
 #             #need id on create entry

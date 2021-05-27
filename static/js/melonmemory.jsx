@@ -35,7 +35,7 @@ function MelonMemory(props) {
             <h2>Memories for {userInfo.user_name}</h2> */}
             {/* need to compare to user */}
             <form  onSubmit={(evt)=> {journalDropdown(evt)}}>
-                <button class="btn btn-primary active"> Create Memory</button>
+                <button id="createMemory" class="btn btn-primary active"> Create Memory</button>
             </form>
 
             { journalDropdownComponent ? <FormMemory journal_id={journal_id} journal={journal} email={userInfo.email}  />:null }
