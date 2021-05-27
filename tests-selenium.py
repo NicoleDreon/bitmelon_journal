@@ -77,27 +77,27 @@ class bitMelonJournal(unittest.TestCase):
         melon_select = Select(self.browser.find_element_by_name('melon_name'))
         melon_select.select_by_value('Pepino – Solanum muricatum')
 
-    #     rating = self.browser.find_element_by_id('rating')
-    #     rating.send_keys("5")
+        rating = self.browser.find_element_by_id('rating')
+        rating.send_keys("5")
 
-    #     tasting_notes = self.browser.find_element_by_id('entry')
-    #     tasting_notes.send_keys("The best melon I have ever tasted")
+        tasting_notes = self.browser.find_element_by_id('entry')
+        tasting_notes.send_keys("The best melon I have ever tasted")
 
-    #     favorite_select = Select(self.browser.find_element_by_id('favorite'))
-    #     favorite_select.select_by_value('Yes')
+        # favorite_select = Select(self.browser.find_element_by_id('favorite'))
+        # favorite_select.select_by_value('Yes')
 
-    #     btn = self.browser.find_element_by_id("journalSubmit")
-    #     btn.click()
+        # btn = self.browser.find_element_by_id("journalSubmit")
+        # btn.click()
 
-    #     time.sleep(1)
+        # time.sleep(1)
 
-    #     btn = self.browser.find_element_by_id("journalShow")
-    #     btn.click()
+        # btn = self.browser.find_element_by_id("journalShow")
+        # btn.click()
 
-    #     time.sleep(1)
+        # time.sleep(1)
 
-    #     result = self.browser.find_element_by_tag_name('h2')
-    #     self.assertTrue('Pepino' in result.text)
+        # result = self.browser.find_element_by_tag_name('h2')
+        # self.assertTrue('Pepino' in result.text)
 
 
     # def test_melonMemory(self):
