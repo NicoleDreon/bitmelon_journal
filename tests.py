@@ -28,7 +28,7 @@ def test_data():
     db.session.add_all([carolsjournal])
     db.session.commit()
 
-    juicymemory = Memory(journal_id=carolsjournal.journal_id, memory='Still the best melon I ever tasted', location='Upper P, Michigan', friend='Sherry', date=date.today())    
+    juicymemory = Memory(journal_id=carolsjournal.journal_id, memory='Still the best melon I ever tasted', location='Upper P, Michigan', friend='Sherry', date='05/26/2021')    
     
     db.session.add_all([juicymemory])
     db.session.commit()

@@ -111,24 +111,26 @@ class bitMelonJournal(unittest.TestCase):
   
         location = self.browser.find_element_by_id('location')
         location.send_keys("Upper P, Michigan")
-    #     memory = self.browser.find_element_by_id('memory')
-    #     memory.send_keys("Still the best melon I ever tasted")
-    #     date = self.browser.find_element_by_id('date')
-    #     date.send_keys("05262021")
-    #     #need to be able to select date from calendar?
-    #     friend = self.browser.find_element_by_id('friend)
-    #     friend.send_keys("Sherry")
 
-#             btn = self.browser.find_element_by_id('')
-#             #need id on create entry
-#             btn.click()
+        memory = self.browser.find_element_by_id('memory')
+        memory.send_keys("Still the best melon I ever tasted")
 
-#             time.sleep(1)
+        date = self.browser.find_element_by_id('date')
+        date.send_keys("05262021")
 
-#             #there is no change on page- don't know how to assert changes 
-#             #when have to open memory to view changes 
-#             # result = self.browser.find_element_by_id('userprofile_header')
-#             # self.assertEqual(result.text, "Sameea")
+        friend = self.browser.find_element_by_id('friend')
+        friend.send_keys("Sherry")
+
+        btn = self.browser.find_element_by_id("memorySubmit")
+        btn.click()
+        time.sleep(1)
+
+        btn = self.browser.find_element_by_id("memoryShow")
+        btn.click()
+        time.sleep(1)
+
+        result = self.browser.find_element_by_tag_name('h5')
+        self.assertTrue('Ate' in result.text)
 
 
 
