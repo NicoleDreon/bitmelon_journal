@@ -1,11 +1,8 @@
 # Bitmelon Journal
-<<<<<<< HEAD
 
 Our team was tasked with creating a journaling application and given these three requirements: keep track of melons tried, tasting notes, and other memories.
 
 This iteration of Bitmelon Journal was built in just over a week.
-=======
->>>>>>> main
 
 ## Contents
 
@@ -44,7 +41,7 @@ Once logged in the user is directd to their profile which displays their user in
 
 ### New Journal Entry
 
-To add a new journal entry select the 'create journal' button. A new entry can be made once for each unique melon in the dorpdown. For the selected melon the user will log their overall rating, tasting notes, and if it is a favorie.
+To add a new journal entry select the 'create journal' button. A new entry can be made once for each unique melon in the dropdown. For the selected melon the user will log their overall rating, tasting notes, and if it is a favortie.
 
 ![new journal entry](https://github.com/NicoleDreon/bitmelon_journal/blob/main/static/img/createjournal.png)
 
